@@ -1,16 +1,6 @@
-import "./App.css";
-import HomePage from "./pages/HomePage";
-import RegisterPage from "./pages/RegisterPage";
+import logo from './logo.svg';
+import './App.css';
 
-<<<<<<< HEAD
-function App() {
-    return (
-        <>
-            <HomePage />
-            <RegisterPage />
-        </>
-    );
-=======
 
 //-----------------------------------------------------------Үндсэн нүүр хуудас-------------------------------------------
 
@@ -18,15 +8,15 @@ function App() {
 
 
 
-function Undsen_Huudas() {
+function Login_Page() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> qqqqqqqqqqqqqqqq</h1>
+        <h1> You are going to login</h1>
+        window.location.href = "http://www.w3schools.com";
       </header>
     </div>
   );
->>>>>>> dd66d74 (test)
 }
 
-export default App;
+export default Login_Page;
