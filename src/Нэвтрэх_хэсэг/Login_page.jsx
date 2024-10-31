@@ -8,14 +8,15 @@ import './App.css';
 
 
 
-function Undsen_Huudas() {
+function Login_Page() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> qqqqqqqqqqqqqqqq</h1>
+        <h1> You are going to login</h1>
+        window.location.href = "http://www.w3schools.com";
       </header>
     </div>
   );
 }
 
-export default Undsen_Huudas;
+export default Login_Page;
