@@ -12,7 +12,7 @@ function Undsen_Huudas() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> 1 + 1 = 11</h1>
+        <h1> qqqqqqqqqqqqqqqq</h1>
       </header>
     </div>
   );
