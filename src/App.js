@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+//-----------------------------------------------------------Үндсэн нүүр хуудас-------------------------------------------
+
+//Энэ хэсэгт заал захиалагч анх нэвтэрч орох үед харагдах хэсгийг кодыг бичнэ
+
+
+
+function Undsen_Huudas() {
   return (
     <div className="App">
       <header className="App-header">
@@ -22,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default Undsen_Huudas;
