@@ -12,9 +12,10 @@ function Undsen_Huudas() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onclick="redirect()">
+        <button>
           Redirect to GFG
         </button>
+        <a href="/Login_Page">move to another page</a>
 
 
         
