@@ -6,6 +6,7 @@ import "./App.css";
 //Энэ хэсэгт заал захиалагч анх нэвтэрч орох үед харагдах хэсгийг кодыг бичнэ
 
 function Undsen_Huudas() {
+<<<<<<< HEAD:src/App.js
     return (
         <div className="App">
             <header className="App-header">
@@ -13,6 +14,20 @@ function Undsen_Huudas() {
             </header>
         </div>
     );
+=======
+  return (
+    <div className="App">
+      <header className="App-header">
+        <button onclick="redirect()">
+          Redirect to GFG
+        </button>
+
+
+        
+      </header>
+    </div>
+  );
+>>>>>>> a019f3d (test):src/App.jsx
 }
 
 export default Undsen_Huudas;
