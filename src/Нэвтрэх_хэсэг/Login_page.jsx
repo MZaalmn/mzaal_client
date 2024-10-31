@@ -12,8 +12,8 @@ function Login_Page() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> You are going to login</h1>
-        window.location.href = "http://www.w3schools.com";
+        <h1>YOOOOOOOOOOLOOOOOOOOOOO</h1>
+        
       </header>
     </div>
   );
