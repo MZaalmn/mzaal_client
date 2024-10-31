@@ -1,24 +1,16 @@
 import logo from './logo.svg';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 
-
-//-----------------------------------------------------------Үндсэн нүүр хуудас-------------------------------------------
-
-//Энэ хэсэгт заал захиалагч анх нэвтэрч орох үед харагдах хэсгийг кодыг бичнэ
-
-
-
 function Undsen_Huudas() {
+  const navigate = useNavigate();
+
   return (
     <div className="App">
       <header className="App-header">
-        <button>
-          Redirect to GFG
+        <button onClick={() => navigate('/Login_Page')}>
+          Login Page
         </button>
-        <a href="/Login_Page">move to another page</a>
-
-
-        
       </header>
     </div>
   );
