@@ -31,6 +31,9 @@ const RegisterPage = () => {
     return (
         <div>
             <h1>Register User</h1>
+            <p className="bg-amber-300 font-bold italic text-4xl w-full text-center">
+                Hi
+            </p>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
