@@ -1,15 +1,13 @@
-import logo from './logo.svg';
-import { useNavigate } from 'react-router-dom';
 import './App.css';
-
-function Undsen_Huudas() {
+import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
+function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1> qqqqqqqqqqqqqqqq</h1>
-            </header>
-        </div>
+        <>
+            <HomePage />
+            <RegisterPage />
+        </>
     );
   }
 
-export default Undsen_Huudas;
+export default App;
