@@ -27,7 +27,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>Registered Users</h1>
+            <h1>Бүртгүүлсэн хэрэглэгчид</h1>
             <ul className="bg-primary hover:bg-primary-light transition">
                 {users.map((user) => (
                     <li key={user._id}>
