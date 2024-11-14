@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { fetcher } from "../utils/fetcher";
 import Button from "../components/Button";
 
-s
+
 //Comment
 const HomePage = () => {
     const [users, setUsers] = useState([]);
@@ -38,7 +38,7 @@ const HomePage = () => {
                     </li>
                 ))}
             </ul>
-            <h1>test</h1>
+            
         </div>
         
         
