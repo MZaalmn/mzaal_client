@@ -1,7 +1,6 @@
 // src/app/UserList.js
 import React, { useEffect, useState } from "react";
 import { fetcher } from "../utils/fetcher";
-import Button from "../components/Button";
 
 //Comment
 const HomePage = () => {

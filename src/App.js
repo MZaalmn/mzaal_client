@@ -4,6 +4,7 @@ import MasterLayout from "./layout/MasterLayout";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
     return (
@@ -13,6 +14,10 @@ function App() {
                     <Route index element={<HomePage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route
+                        path="/forgot-password"
+                        element={<ForgotPassword />}
+                    />
                 </Route>
             </Routes>
         </BrowserRouter>

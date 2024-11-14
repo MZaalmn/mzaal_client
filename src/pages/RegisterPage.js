@@ -1,8 +1,8 @@
 // src/pages/RegisterPage.js
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Button from "../components/Button";
-//
 const RegisterPage = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -94,9 +94,12 @@ const RegisterPage = () => {
                             />
                             <label className="text-sm text-gray-600">
                                 Зөвшөөрч байна{" "}
-                                <a href="#" className="text-blue-500 underline">
+                                <Link
+                                    href="#"
+                                    className="text-blue-500 underline"
+                                >
                                     Үйлчилгээний нөхцөл
-                                </a>
+                                </Link>
                                 .
                             </label>
                         </div>
