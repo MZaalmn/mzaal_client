@@ -47,12 +47,9 @@ export default function Navbar() {
             </nav>
             <div className="bg-white py-3 shadow-md text-sm">
                 <div className="container justify-center mx-auto flex items-center space-x-6 overflow-x-auto px-4">
-                    {/* Filter Button */}
                     <button className="bg-gray-100 px-4 py-2 rounded-lg text-gray-700 font-semibold">
                         Шүүлт хийх
                     </button>
-
-                    {/* Category Items */}
                     <div className="flex items-center space-x-6 text-gray-700">
                         <div className="flex items-center space-x-2">
                             <FaBasketballBall />
@@ -72,12 +69,10 @@ export default function Navbar() {
                         </div>
                         <div className="flex items-center space-x-2">
                             <MdOutlineSportsTennis />
-
                             <span>Бадминтоны заал</span>
                         </div>
                         <div className="flex items-center space-x-2">
                             <FaPeopleRobbery />
-
                             <span>Бүжгийн заал</span>
                         </div>
                     </div>
