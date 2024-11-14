@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Button from "../components/Button";
-//hehehehehehehehehehehhe----------------------------------------------------------------------------------------------------------
 const RegisterPage = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
