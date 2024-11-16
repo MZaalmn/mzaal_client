@@ -1,5 +1,5 @@
 import React from "react";
-const Button = ({ onClick, children, className = "", variant = "primary" }) => {
+const ButtonComponent = ({ onClick, children, className = "", variant = "primary" }) => {
     const baseStyles =
         "px-4 py-2 font-semibold rounded focus:outline-none focus:ring-2 focus:ring-opacity-50";
     const variants = {
@@ -17,4 +17,4 @@ const Button = ({ onClick, children, className = "", variant = "primary" }) => {
         </button>
     );
 };
-export default Button;
+export default ButtonComponent;
