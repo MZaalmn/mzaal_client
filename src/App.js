@@ -6,6 +6,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ForgotPassword from "./pages/ForgotPassword";
 
+
 function App() {
     return (
         <BrowserRouter>
@@ -18,6 +19,8 @@ function App() {
                         path="/forgot-password"
                         element={<ForgotPassword />}
                     />
+
+                    
                 </Route>
             </Routes>
         </BrowserRouter>
