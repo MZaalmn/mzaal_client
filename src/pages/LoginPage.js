@@ -28,8 +28,8 @@ const LoginPage = () => {
             );
             localStorage.setItem("authToken", response.data.token);
             localStorage.setItem("userRole", response.data.role);
-            // navigate("/");
-            window.location.href = "http://localhost:3001/";
+            navigate("/");
+            // window.location.href = "http://localhost:3001/";
         } catch (err) {
             setError("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
             console.error(
