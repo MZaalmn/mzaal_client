@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ForgotPassword from "./pages/ForgotPassword";
+import AskLogin_or_Register from "./pages/AskLogin_or_Register";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                         path="/forgot-password"
                         element={<ForgotPassword />}
                     />
+                    <Route path="/askLogin_or_Register" element={<AskLogin_or_Register />} />
 
                     
                 </Route>
