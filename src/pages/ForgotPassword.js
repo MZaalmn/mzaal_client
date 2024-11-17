@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 
 const ForgotPassword = () => {
-    const [step, setStep] = useState(2); // Tracks the current step
+    const [step, setStep] = useState(1); // Tracks the current step
+    const [input, setInput] = useState(""); // Tracks the email/phone input
     const [newPassword, setNewPassword] = useState(""); // Tracks the new password
     const [confirmPassword, setConfirmPassword] = useState(""); // Tracks the confirm password
     const [error, setError] = useState(""); // Tracks errors
     const [success, setSuccess] = useState(false); // Tracks success state
+
+    const handleInputChange = (e) => {
+        setInput(e.target.value);
+        setError("");
+    };
 
     const handleNewPasswordChange = (e) => {
         setNewPassword(e.target.value);
@@ -17,7 +23,16 @@ const ForgotPassword = () => {
         setError("");
     };
 
-    const handleSubmit = () => {
+    const handleSubmitStep1 = () => {
+        // Simulate API call for email/phone validation
+        if (input === "valid@example.com" || input === "valid_phone_number") {
+            setStep(2);
+        } else {
+            setError("Та бүртгэлгүй цахим хаяг эсвэл утасны дугаар оруулсан байна.");
+        }
+    };
+
+    const handleSubmitStep2 = () => {
         if (newPassword.length < 8) {
             setError("Шинэ нууц үг 8 тэмдэгтээс дээш байх ёстой.");
         } else if (newPassword !== confirmPassword) {
@@ -51,6 +66,52 @@ const ForgotPassword = () => {
                     boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
                 }}
             >
+                {step === 1 && (
+                    <div>
+                        <h3>Нууц үгээ мартсан уу?</h3>
+                        <p style={{ marginBottom: "20px" }}>
+                            Таны бүртгэлтэй цахим хаяг эсвэл утасны дугаарыг оруулна уу:
+                        </p>
+                        <input
+                            type="text"
+                            placeholder="Цахим хаяг эсвэл утасны дугаар"
+                            value={input}
+                            onChange={handleInputChange}
+                            style={{
+                                width: "100%",
+                                padding: "10px",
+                                marginBottom: "10px",
+                                borderRadius: "4px",
+                                border: "1px solid #ccc",
+                            }}
+                        />
+                        {error && (
+                            <p
+                                style={{
+                                    color: "red",
+                                    marginBottom: "10px",
+                                    fontSize: "14px",
+                                }}
+                            >
+                                ⚠ {error}
+                            </p>
+                        )}
+                        <button
+                            onClick={handleSubmitStep1}
+                            style={{
+                                backgroundColor: "#ff4500",
+                                color: "#fff",
+                                padding: "10px 20px",
+                                borderRadius: "4px",
+                                border: "none",
+                                cursor: "pointer",
+                                width: "100%",
+                            }}
+                        >
+                            Илгээх
+                        </button>
+                    </div>
+                )}
                 {step === 2 && (
                     <div>
                         <h3>Шинэ нууц үг үүсгэх</h3>
@@ -95,7 +156,7 @@ const ForgotPassword = () => {
                             </p>
                         )}
                         <button
-                            onClick={handleSubmit}
+                            onClick={handleSubmitStep2}
                             style={{
                                 backgroundColor: "#ff4500",
                                 color: "#fff",
