@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
     const [step, setStep] = useState(1); // Tracks the current step
@@ -6,7 +9,8 @@ const ForgotPassword = () => {
     const [newPassword, setNewPassword] = useState(""); // Tracks the new password
     const [confirmPassword, setConfirmPassword] = useState(""); // Tracks the confirm password
     const [error, setError] = useState(""); // Tracks errors
-    const [success, setSuccess] = useState(false); // Tracks success state
+
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         setInput(e.target.value);
@@ -28,85 +32,56 @@ const ForgotPassword = () => {
         if (input === "valid@example.com" || input === "valid_phone_number") {
             setStep(2);
         } else {
-            setError("Та бүртгэлгүй цахим хаяг эсвэл утасны дугаар оруулсан байна.");
+            setError(
+                "Та бүртгэлгүй цахим хаяг эсвэл утасны дугаар оруулсан байна."
+            );
+            toast.error("Бүртгэлгүй цахим хаяг эсвэл утасны дугаар.");
         }
     };
 
     const handleSubmitStep2 = () => {
         if (newPassword.length < 8) {
             setError("Шинэ нууц үг 8 тэмдэгтээс дээш байх ёстой.");
+            toast.error("Шинэ нууц үг 8 тэмдэгтээс дээш байх ёстой.");
         } else if (newPassword !== confirmPassword) {
-            setError("Шинэ нууц үг болон давтан оруулсан нууц үг таарахгүй байна.");
+            setError(
+                "Шинэ нууц үг болон давтан оруулсан нууц үг таарахгүй байна."
+            );
+            toast.error("Нууц үг таарахгүй байна.");
         } else {
             setError("");
-            setSuccess(true);
             setStep(3);
+            toast.success("Нууц үг амжилттай өөрчлөгдлөө!");
         }
     };
 
     return (
-        <div
-            style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                height: "100vh",
-                backgroundColor: "#f7f7f7",
-            }}
-        >
-            <div
-                style={{
-                    maxWidth: "400px",
-                    width: "100%",
-                    backgroundColor: "#fff",
-                    border: "1px solid #ddd",
-                    borderRadius: "8px",
-                    padding: "20px",
-                    textAlign: "center",
-                    boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
-                }}
-            >
+        <div className="flex justify-center items-center mt-16">
+            <div className="max-w-md w-full bg-white p-6 rounded-lg shadow-lg">
                 {step === 1 && (
                     <div>
-                        <h3>Нууц үгээ мартсан уу?</h3>
-                        <p style={{ marginBottom: "20px" }}>
-                            Таны бүртгэлтэй цахим хаяг эсвэл утасны дугаарыг оруулна уу:
+                        <h3 className="text-xl font-semibold mb-4">
+                            Нууц үгээ мартсан уу?
+                        </h3>
+                        <p className="mb-4">
+                            Таны бүртгэлтэй цахим хаяг эсвэл утасны дугаарыг
+                            оруулна уу:
                         </p>
                         <input
                             type="text"
                             placeholder="Цахим хаяг эсвэл утасны дугаар"
                             value={input}
                             onChange={handleInputChange}
-                            style={{
-                                width: "100%",
-                                padding: "10px",
-                                marginBottom: "10px",
-                                borderRadius: "4px",
-                                border: "1px solid #ccc",
-                            }}
+                            className={`w-full p-3 mb-4 border border-gray-300 rounded-lg ${
+                                error ? "input-error" : "border-gray-300"
+                            }`}
                         />
                         {error && (
-                            <p
-                                style={{
-                                    color: "red",
-                                    marginBottom: "10px",
-                                    fontSize: "14px",
-                                }}
-                            >
-                                ⚠ {error}
-                            </p>
+                            <p className="text-red-500 text-sm mb-4">{error}</p>
                         )}
                         <button
                             onClick={handleSubmitStep1}
-                            style={{
-                                backgroundColor: "#ff4500",
-                                color: "#fff",
-                                padding: "10px 20px",
-                                borderRadius: "4px",
-                                border: "none",
-                                cursor: "pointer",
-                                width: "100%",
-                            }}
+                            className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium rounded-lg hover:from-orange-600 hover:to-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300"
                         >
                             Илгээх
                         </button>
@@ -114,97 +89,60 @@ const ForgotPassword = () => {
                 )}
                 {step === 2 && (
                     <div>
-                        <h3>Шинэ нууц үг үүсгэх</h3>
-                        <p style={{ marginBottom: "20px" }}>
-                            Та тоо, үсэг, тэмдэгт холилдуулж шинэ нууц үг үүсгэнэ үү!
+                        <h3 className="text-xl font-semibold mb-4">
+                            Шинэ нууц үг үүсгэх
+                        </h3>
+                        <p className="mb-4">
+                            Та тоо, үсэг, тэмдэгт холилдуулж шинэ нууц үг
+                            үүсгэнэ үү!
                         </p>
                         <input
                             type="password"
                             placeholder="Шинэ нууц үг"
                             value={newPassword}
                             onChange={handleNewPasswordChange}
-                            style={{
-                                width: "100%",
-                                padding: "10px",
-                                marginBottom: "10px",
-                                borderRadius: "4px",
-                                border: "1px solid #ccc",
-                            }}
+                            className={`w-full p-3 mb-4 border border-gray-300 rounded-lg ${
+                                error ? "input-error" : "border-gray-300"
+                            }`}
                         />
                         <input
                             type="password"
                             placeholder="Шинэ нууц үгээ дахин оруулна уу"
                             value={confirmPassword}
                             onChange={handleConfirmPasswordChange}
-                            style={{
-                                width: "100%",
-                                padding: "10px",
-                                marginBottom: "10px",
-                                borderRadius: "4px",
-                                border: "1px solid #ccc",
-                            }}
+                            className={`w-full p-3 mb-4 border border-gray-300 rounded-lg ${
+                                error ? "input-error" : "border-gray-300"
+                            }`}
                         />
                         {error && (
-                            <p
-                                style={{
-                                    color: "red",
-                                    marginBottom: "10px",
-                                    fontSize: "14px",
-                                }}
-                            >
-                                ⚠ {error}
-                            </p>
+                            <p className="text-red-500 text-sm mb-4">{error}</p>
                         )}
                         <button
                             onClick={handleSubmitStep2}
-                            style={{
-                                backgroundColor: "#ff4500",
-                                color: "#fff",
-                                padding: "10px 20px",
-                                borderRadius: "4px",
-                                border: "none",
-                                cursor: "pointer",
-                                width: "100%",
-                            }}
+                            className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium rounded-lg hover:from-orange-600 hover:to-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300"
                         >
                             Батлах
                         </button>
                     </div>
                 )}
-                {step === 3 && success && (
+                {step === 3 && (
                     <div>
-                        <h3 style={{ color: "#3c763d", marginBottom: "20px" }}>
+                        <h3 className="text-xl font-semibold text-green-600 mb-4">
                             Таны нууц үг өөрчлөгдлөө ✔
                         </h3>
-                        <div
-                            style={{
-                                backgroundColor: "#dff0d8",
-                                border: "1px solid #d6e9c6",
-                                color: "#3c763d",
-                                padding: "10px",
-                                borderRadius: "4px",
-                                marginBottom: "20px",
-                            }}
-                        >
+                        <div className="bg-green-100 border border-green-300 text-green-700 p-3 mb-4 rounded-lg">
                             <p>Амжилттай!</p>
                         </div>
                         <button
-                            style={{
-                                backgroundColor: "#ff4500",
-                                color: "#fff",
-                                padding: "10px 20px",
-                                borderRadius: "4px",
-                                border: "none",
-                                cursor: "pointer",
-                                width: "100%",
-                            }}
-                            onClick={() => alert("Нэвтрэх хэсэг рүү шилжих")}
+                            className="w-full py-3 bg-gradient-to-r from-orange-500 to-orange-700 text-white font-medium rounded-lg hover:from-orange-600 hover:to-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300"
+                            onClick={navigate("/login")}
                         >
                             Нэвтрэх
                         </button>
                     </div>
                 )}
             </div>
+            <ToastContainer position="top-left" autoClose={1000} />
         </div>
     );
 };
