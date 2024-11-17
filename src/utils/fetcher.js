@@ -1,4 +1,4 @@
-// src/utils/fetcher.ts
+// src/utils/fetcher.js
 export async function fetcher(path) {
     const req = await fetch(`http://localhost:8000/${path}`);
     if (!req.ok) {

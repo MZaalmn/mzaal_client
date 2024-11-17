@@ -11,6 +11,13 @@ const LoginPage = () => {
     });
     const [error, setError] = useState("");
 
+    useEffect(() => {
+        const authToken = localStorage.getItem("authToken");
+        if (authToken) {
+            navigate("/");
+        }
+    }, [navigate]);
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData({
