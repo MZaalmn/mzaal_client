@@ -1,8 +1,19 @@
-.body
+body
 {
     align-items: center;
     justify-content: center;
-    background-color: aqua;
-    height: 1000px;
-    width: 1000px;
+    display: flex;
+    background-color: rgb(208, 208, 208);   
+}
+
+.main_container
+{
+    align-items: center;
+    flex-direction: row;
+    border: 2px solid green;
+
+    height: 200px;
+    width: 200px;
+
+
 }

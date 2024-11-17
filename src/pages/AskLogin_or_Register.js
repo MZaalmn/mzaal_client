@@ -5,9 +5,12 @@ import '../Css_files/AskLoginOrRegister.css';
 const AskLoginOrRegister = () => {
     return (
         
-        <div className="body">
-            <h1>TEST---------------------------------------</h1>
-        </div>
+        <body>
+            <div className="main_container">
+
+            </div>
+            
+        </body>
     );
 };
 
