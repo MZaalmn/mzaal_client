@@ -1,7 +1,6 @@
-// src/pages/LoginPage.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // for navigation
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -10,6 +9,13 @@ const LoginPage = () => {
         password: "",
     });
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        const authToken = localStorage.getItem("authToken");
+        if (authToken) {
+            navigate("/");
+        }
+    }, [navigate]);
 
     const handleChange = (e) => {
         setFormData({
@@ -29,7 +35,6 @@ const LoginPage = () => {
             localStorage.setItem("authToken", response.data.token);
             localStorage.setItem("userRole", response.data.role);
             navigate("/");
-            // window.location.href = "http://localhost:3001/";
         } catch (err) {
             setError("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
             console.error(
