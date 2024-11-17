@@ -103,16 +103,16 @@ export default function Navbar() {
                         ) : (
                             <>
                                 <ButtonComponent
-                                    icon={<FaUser />}
+                                    icon={<FaUser className="mr-2" />}
                                     onClick={() => navigate("/login")}
-                                    className="bg-white text-orange-400 text-sm border rounded-lg hover:text-white hover:bg-orange transition focus:ring-0 font-normal"
+                                    className="bg-white text-orange-500 text-sm border rounded-lg hover:text-white hover:bg-orange-500 transition focus:ring-0 font-normal"
                                 >
                                     Нэвтрэх
                                 </ButtonComponent>
                                 <ButtonComponent
-                                    icon={<FaUserPlus />}
+                                    icon={<FaUserPlus className="mr-2" />}
                                     onClick={() => navigate("/register")}
-                                    className="bg-white text-orange-400 text-sm border rounded-lg hover:text-white hover:bg-orange transition focus:ring-0 font-normal"
+                                    className="bg-white text-orange-500 text-sm border rounded-lg hover:text-white hover:bg-orange-500 transition focus:ring-0 font-normal"
                                 >
                                     Бүртгүүлэх
                                 </ButtonComponent>
