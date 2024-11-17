@@ -5,7 +5,7 @@ import '../Css_files/AskLoginOrRegister.css';
 const AskLoginOrRegister = () => {
     return (
         
-        <body>
+        <body className="body">
             <div className="main_container">
 
             </div>
