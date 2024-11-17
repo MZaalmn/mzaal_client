@@ -6,9 +6,9 @@ const MasterLayout = () => {
     return (
         <>
             <Header />
-            <main className="py-6 px-4 sm:p-6 md:py-10 md:px-8">
+            {/* <main className="py-6 px-4 sm:p-6 md:py-10 md:px-8">
                 <div className="w-full"></div>
-            </main>
+            </main> */}
             <Outlet />
             <Footer />
         </>

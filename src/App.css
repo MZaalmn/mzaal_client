@@ -36,3 +36,24 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes jiggle {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+.input-error {
+    border-color: red;
+    animation: jiggle 0.3s ease-in-out;
+}

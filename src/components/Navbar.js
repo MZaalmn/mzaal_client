@@ -18,7 +18,7 @@ import { CiSearch } from "react-icons/ci";
 import Dropdown from "./Dropdown";
 import ButtonComponent from "./Button";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -58,15 +58,17 @@ export default function Navbar() {
         },
     ];
     return (
-        <>
-            <nav className="bg-orange-500 p-4 text-sm">
+        <div className="sticky top-0">
+            <nav className="bg-gradient-to-r from-orange-500 to-orange-600 p-4 text-sm sticky top-0">
                 <div className="container mx-auto flex items-center justify-between">
                     <div className="flex items-center">
-                        <img
-                            src="/MzaalLogo.svg"
-                            alt="logo"
-                            className="h-10 w-full mr-2"
-                        />
+                        <Link to="/">
+                            <img
+                                src="/MzaalLogo.svg"
+                                alt="logo"
+                                className="h-10 w-full mr-2"
+                            />
+                        </Link>
                     </div>
                     <div className="flex w-full justify-center">
                         <div className="relative w-[50%]">
@@ -103,16 +105,16 @@ export default function Navbar() {
                                 <ButtonComponent
                                     icon={<FaUser />}
                                     onClick={() => navigate("/login")}
-                                    className="bg-orange text-white border rounded-full hover:text-orange hover:bg-white  focus:ring-0 text-lg font-normal"
+                                    className="bg-white text-orange-400 text-sm border rounded-lg hover:text-white hover:bg-orange transition focus:ring-0 font-normal"
                                 >
-                                    Login
+                                    Нэвтрэх
                                 </ButtonComponent>
                                 <ButtonComponent
                                     icon={<FaUserPlus />}
                                     onClick={() => navigate("/register")}
-                                    className="bg-white text-orange border rounded-full hover:text-white hover:bg-orange  focus:ring-0 text-lg font-normal"
+                                    className="bg-white text-orange-400 text-sm border rounded-lg hover:text-white hover:bg-orange transition focus:ring-0 font-normal"
                                 >
-                                    Register
+                                    Бүртгүүлэх
                                 </ButtonComponent>
                             </>
                         )}
@@ -152,6 +154,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

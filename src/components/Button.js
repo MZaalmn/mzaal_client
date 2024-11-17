@@ -19,7 +19,7 @@ const ButtonComponent = ({
     return (
         <button
             onClick={onClick}
-            className={`${baseStyles} ${variants[variant]} ${className} flex items-center`}
+            className={`${baseStyles} ${variants[variant]} ${className} flex justify-center items-center`}
         >
             {/* Render the icon if provided */}
             {icon && <span className="mr-2 text-sm">{icon}</span>}
