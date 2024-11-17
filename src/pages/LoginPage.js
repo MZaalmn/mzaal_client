@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +10,13 @@ const LoginPage = () => {
         rememberMe: false,
     });
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        const authToken = localStorage.getItem("authToken");
+        if (authToken) {
+            navigate("/");
+        }
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -51,9 +58,7 @@ const LoginPage = () => {
 
     return (
         <div className="w-[50%] mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-center mb-6">
-                Нэвтрэх
-            </h2>
+            <h2 className="text-2xl font-semibold text-center mb-6">Нэвтрэх</h2>
             {error && (
                 <p className="text-red-500 text-center mb-4 font-medium">
                     {error}
@@ -73,9 +78,7 @@ const LoginPage = () => {
                 >
                     Facebook эрхээр нэвтрэх
                 </button>
-                <button
-                    className="w-full bg-gray-500 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center hover:bg-gray-600"
-                >
+                <button className="w-full bg-gray-500 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center hover:bg-gray-600">
                     Гар утасны дугаараар нэвтрэх
                 </button>
             </div>

@@ -1,4 +1,11 @@
-import { FaShoppingCart, FaHeart, FaUser } from "react-icons/fa";
+import {
+    FaShoppingCart,
+    FaHeart,
+    FaUser,
+    FaCog,
+    FaSignOutAlt,
+    FaUserPlus,
+} from "react-icons/fa";
 import {
     FaBasketballBall,
     FaFootballBall,
@@ -8,8 +15,48 @@ import {
 import { MdOutlineSportsTennis } from "react-icons/md";
 import { FaPeopleRobbery } from "react-icons/fa6";
 import { CiSearch } from "react-icons/ci";
+import Dropdown from "./Dropdown";
+import ButtonComponent from "./Button";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        setIsLoggedIn(!!localStorage.getItem("authToken"));
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("userRole");
+        setIsLoggedIn(false);
+        navigate("/login");
+    };
+
+    const handleItemSelect = (item) => {
+        console.log(`Selected: ${item.label}`);
+        if (item.action) item.action();
+    };
+
+    const menuItems = [
+        {
+            label: "Profile",
+            icon: <FaUser />,
+            action: () => alert("Go to Profile"),
+        },
+        {
+            label: "Settings",
+            icon: <FaCog />,
+            action: () => alert("Go to Settings"),
+        },
+        {
+            label: "Logout",
+            icon: <FaSignOutAlt />,
+            action: handleLogout,
+        },
+    ];
     return (
         <>
             <nav className="bg-orange-500 p-4 text-sm">
@@ -34,14 +81,41 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div className="flex items-center space-x-6 text-white text-xl">
-                        <div className="relative">
-                            <FaShoppingCart />
-                            <span className="absolute top-[-10px] right-[-10px] border border-blue-600 bg-white text-blue-600 text-xs rounded-full px-1">
-                                2
-                            </span>
-                        </div>
-                        <FaHeart />
-                        <FaUser />
+                        {isLoggedIn ? (
+                            <div className="flex items-center space-x-6 text-white text-xl">
+                                <div className="relative">
+                                    <FaShoppingCart />
+                                    <span className="absolute top-[-10px] right-[-10px] border border-blue-600 bg-white text-blue-600 text-xs rounded-full px-1">
+                                        2
+                                    </span>
+                                </div>
+                                <FaHeart />
+                                <Dropdown
+                                    icon={<FaUser />}
+                                    items={menuItems}
+                                    title={null}
+                                    onItemSelect={handleItemSelect}
+                                    className="ml-auto"
+                                />
+                            </div>
+                        ) : (
+                            <>
+                                <ButtonComponent
+                                    icon={<FaUser />}
+                                    onClick={() => navigate("/login")}
+                                    className="bg-orange text-white border rounded-full hover:text-orange hover:bg-white  focus:ring-0 text-lg font-normal"
+                                >
+                                    Login
+                                </ButtonComponent>
+                                <ButtonComponent
+                                    icon={<FaUserPlus />}
+                                    onClick={() => navigate("/register")}
+                                    className="bg-white text-orange border rounded-full hover:text-white hover:bg-orange  focus:ring-0 text-lg font-normal"
+                                >
+                                    Register
+                                </ButtonComponent>
+                            </>
+                        )}
                     </div>
                 </div>
             </nav>

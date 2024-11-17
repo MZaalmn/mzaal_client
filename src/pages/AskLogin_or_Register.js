@@ -1,23 +1,17 @@
 // src/pages/AskLogin_or_Register.js
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"; // for navigation
+import React from "react";
+import '../Css_files/AskLoginOrRegister.css';
 
-const AskLogin_or_Register = () => {
-    const navigate = useNavigate();
-   
-
-    
-
-   
-
+const AskLoginOrRegister = () => {
     return (
-        <div>
-            <h1>TEST---------------------------------------</h1>
+        
+        <body className="body">
+            <div className="main_container">
+
+            </div>
             
-            
-        </div>
+        </body>
     );
 };
 
-export default AskLogin_or_Register;
+export default AskLoginOrRegister;
