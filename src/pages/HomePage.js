@@ -43,6 +43,8 @@
 
 // export default HomePage;
 import React, { useEffect, useState } from "react";
+import HallsSection from "../components/halls/HallsSection";
+import SaledHallsSection from "../components/saledHalls/saledHallsSection";
 
 const HomePage = () => {
     const [role, setRole] = useState("");
@@ -59,7 +61,7 @@ const HomePage = () => {
     };
 
     return (
-        <div className="w-[50%] mx-auto mt-10 text-center">
+        <div className="w-full mx-auto mt-10 text-center">
             <h1 className="text-3xl font-bold">Welcome to Home Page</h1>
             <p className="text-xl mt-5">
                 Hi {role.charAt(0).toUpperCase() + role.slice(1)}!
@@ -72,6 +74,8 @@ const HomePage = () => {
                     Logout
                 </button>
             )}
+            <SaledHallsSection />
+            <HallsSection />
         </div>
     );
 };

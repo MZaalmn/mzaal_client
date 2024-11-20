@@ -1,15 +1,20 @@
-import React, { useState, use } from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash, FaFacebook, FaPhoneAlt } from "react-icons/fa";
+import ButtonComponent from "../components/Button";
+import { FcGoogle } from "react-icons/fc";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         usernameOrEmail: "",
         password: "",
-        rememberMe: false,
     });
     const [error, setError] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     useEffect(() => {
         const authToken = localStorage.getItem("authToken");
@@ -19,11 +24,11 @@ const LoginPage = () => {
     }, [navigate]);
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
         setFormData({
             ...formData,
-            [name]: type === "checkbox" ? checked : value,
+            [e.target.name]: e.target.value,
         });
+        setError(null);
     };
 
     const handleSubmit = async (e) => {
@@ -38,6 +43,7 @@ const LoginPage = () => {
             localStorage.setItem("userRole", response.data.role);
             navigate("/");
         } catch (err) {
+            toast.error("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
             setError("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
             console.error(
                 "Login Error: ",
@@ -46,114 +52,118 @@ const LoginPage = () => {
         }
     };
 
-    const handleGoogleLogin = () => {
-        // Google OAuth руу чиглүүлэх
-        window.location.href = "http://localhost:8000/auth/google";
-    };
-
-    const handleFacebookLogin = () => {
-        // Facebook OAuth руу чиглүүлэх
-        window.location.href = "http://localhost:8000/auth/facebook";
-    };
-
     return (
-        <div className="w-[50%] mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-center mb-6">
-                Нэвтрэх
-            </h2>
-            {error && (
-                <p className="text-red-500 text-center mb-4 font-medium">
-                    {error}
-                </p>
-            )}
-            {/* Social login buttons */}
-            <div className="space-y-3 mb-6">
-                <button
-                    onClick={handleGoogleLogin}
-                    className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center hover:bg-blue-600"
-                >
-                    Google эрхээр нэвтрэх
-                </button>
-                <button
-                    onClick={handleFacebookLogin}
-                    className="w-full bg-blue-700 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center hover:bg-blue-800"
-                >
-                    Facebook эрхээр нэвтрэх
-                </button>
-                <button
-                    className="w-full bg-gray-500 text-white py-2 px-4 rounded-lg font-medium flex items-center justify-center hover:bg-gray-600"
-                >
-                    Гар утасны дугаараар нэвтрэх
-                </button>
-            </div>
-            <div className="text-center text-gray-500 font-medium my-4">
-                <span>Эсвэл</span>
-            </div>
-            {/* Login form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-700">
-                        Email хаяг
-                    </label>
-                    <input
-                        type="text"
-                        name="usernameOrEmail"
-                        value={formData.usernameOrEmail}
-                        onChange={handleChange}
-                        required
-                        placeholder="Email хаяг"
-                        className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div>
-                    <label className="block mb-2 text-sm font-medium text-gray-700">
-                        Нууц үг
-                    </label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                        placeholder="Нууц үг"
-                        className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="flex items-center justify-between">
-                    <label className="flex items-center text-sm text-gray-700">
+        <div className="flex justify-center items-center gap-10 mt-16">
+            <div className="w-full max-w-md flex flex-col items-center bg-white shadow-lg rounded-lg p-8 dark:bg-gray-800">
+                <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6 dark:text-gray-100">
+                    Нэвтрэх
+                </h2>
+                <form className="w-full" onSubmit={handleSubmit}>
+                    <div className="mb-6">
+                        <label
+                            htmlFor="usernameOrEmail"
+                            className="block text-sm font-semibold text-gray-700 mb-2 dark:text-gray-200"
+                        >
+                            И-мэйл
+                        </label>
                         <input
-                            type="checkbox"
-                            name="rememberMe"
-                            checked={formData.rememberMe}
+                            type="text"
+                            name="usernameOrEmail"
+                            id="usernameOrEmail"
+                            value={formData.usernameOrEmail}
                             onChange={handleChange}
-                            className="mr-2"
+                            // required
+                            placeholder="Хэрэглэгчийн нэр эсвэл и-мэйл"
+                            className={`w-full px-4 py-2 text-gray-800 bg-gray-50 border ${
+                                error ? "input-error" : "border-gray-300"
+                            } rounded-lg focus:ring-blue-400 focus:outline-none dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:border-gray-600`}
                         />
-                        Remember me
-                    </label>
-                    <a
-                        href="/forgot-password"
-                        className="text-sm text-blue-500 hover:underline"
-                    >
-                        Нууц үгээ мартсан уу?
-                    </a>
-                </div>
-                <div className="text-center mt-6">
+                    </div>
+                    <div className="mb-6 relative">
+                        <label
+                            htmlFor="password"
+                            className="block text-sm font-semibold text-gray-700 mb-2 dark:text-gray-200"
+                        >
+                            Нууц үг
+                        </label>
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            id="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            // required
+                            placeholder="Нууц үг"
+                            className={`w-full px-4 py-2 text-gray-800 bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-400 focus:outline-none dark:bg-gray-700 dark:text-gray-100 dark:placeholder-gray-400 dark:border-gray-600 ${
+                                error ? "input-error" : "border-gray-300"
+                            }`}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute top-10 right-5 flex items-center text-gray-600"
+                        >
+                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                    </div>
+                    <div className="my-6 text-center">
+                        {error && (
+                            <p className="text-red-500 text-sm">{error}!!!</p>
+                        )}
+                    </div>
+                    <p className="text-center my-4 text-sm text-gray-600">
+                        Нууц үгээ мартсан уу?{" "}
+                        <Link
+                            className="text-orange hover:underline"
+                            to="/forgot-password"
+                        >
+                            Сэргээх.{" "}
+                        </Link>
+                    </p>
                     <button
                         type="submit"
-                        className="w-full bg-red-500 text-white py-2 px-4 rounded-lg font-medium shadow-lg hover:bg-red-600"
+                        className="w-full py-3 text-white font-medium text-lg rounded-lg bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 focus:ring-4 focus:ring-orange-300 focus:outline-none dark:focus:ring-orange-800"
                     >
                         Нэвтрэх
                     </button>
-                </div>
-                <div className="text-center mt-4">
-                    <button
-                        onClick={() => navigate("/register")}
-                        className="w-full border border-gray-300 py-2 px-4 rounded-lg font-medium text-gray-700 hover:bg-gray-100"
+                    <p className="text-center my-4 text-sm text-gray-600">
+                        Хэрэв та бүртгэлгүй бол{" "}
+                        <Link
+                            className="text-orange hover:underline"
+                            to="/register"
+                        >
+                            энд дарж{" "}
+                        </Link>
+                        бүртгүүлнэ үү.
+                    </p>
+                </form>
+            </div>
+
+            <div className="border-r-2 h-96"></div>
+
+            <div className="w-full max-w-md flex flex-col items-center bg-white shadow-lg rounded-lg p-8 dark:bg-gray-800">
+                <div className="flex w-full flex-col justify-center gap-3">
+                    <ButtonComponent
+                        icon={<FcGoogle className="text-lg" />}
+                        className="bg-transparent text-black hover:bg-transparent border rounded-2xl hover:bg-slate-100 transition hover:shadow-sm"
                     >
-                        Бүртгүүлэх
-                    </button>
+                        Google эрхээр нэвтрэх
+                    </ButtonComponent>
+                    <ButtonComponent
+                        icon={<FaFacebook className="text-lg text-blue-500" />}
+                        className="bg-transparent text-black hover:bg-transparent border rounded-2xl hover:bg-slate-100 transition hover:shadow-sm"
+                    >
+                        Facebook эрхээр нэвтрэх
+                    </ButtonComponent>
+                    <ButtonComponent
+                        icon={<FaPhoneAlt className="text-lg text-orange" />}
+                        className="bg-transparent text-black hover:bg-transparent border rounded-2xl hover:bg-slate-100 transition hover:shadow-sm"
+                    >
+                        Гар утасны дугаараар нэвтрэх
+                    </ButtonComponent>
                 </div>
-            </form>
+            </div>
+            <ToastContainer position="top-left" autoClose={1000} />
         </div>
     );
 };
