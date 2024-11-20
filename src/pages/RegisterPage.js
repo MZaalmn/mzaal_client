@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaFacebook, FaPhoneAlt } from "react-icons/fa";
-import { IoMdBasketball } from "react-icons/io";
 import ButtonComponent from "../components/Button";
 import { FcGoogle } from "react-icons/fc";
 import { toast, ToastContainer } from "react-toastify";
@@ -221,10 +220,7 @@ const RegisterPage = () => {
                                     }
                                 `}
                                 >
-                                    <div>
-                                        <IoMdBasketball />
-                                    </div>{" "}
-                                    8-16 тэмдэгт
+                                    <div>🏀</div> 8-16 тэмдэгт
                                 </p>
                                 <p
                                     className={`flex items-center gap-2 ${
@@ -234,9 +230,7 @@ const RegisterPage = () => {
                                     }
                                 `}
                                 >
-                                    <div>
-                                        <IoMdBasketball />
-                                    </div>
+                                    <div>🏀</div>
                                     Нэг том үсэг агуулсан байх
                                 </p>
                                 <p
@@ -247,10 +241,7 @@ const RegisterPage = () => {
                                     }
                                 `}
                                 >
-                                    <div>
-                                        <IoMdBasketball />
-                                    </div>{" "}
-                                    Нэг жижиг үсэг агуулсан байх
+                                    <div>🏀</div> Нэг жижиг үсэг агуулсан байх
                                 </p>
                                 <p
                                     className={`flex items-center gap-2 ${
@@ -260,10 +251,7 @@ const RegisterPage = () => {
                                     }
                                 `}
                                 >
-                                    <div>
-                                        <IoMdBasketball />
-                                    </div>{" "}
-                                    Нэг тоо агуулсан байх
+                                    <div>🏀</div> Нэг тоо агуулсан байх
                                 </p>
                                 <p
                                     className={`flex gap-2 ${
@@ -273,11 +261,8 @@ const RegisterPage = () => {
                                     }
                                 `}
                                 >
-                                    <div>
-                                        <IoMdBasketball />
-                                    </div>{" "}
-                                    Тусгай тэмдэгтүүдийн аль нэгийг агуулсан
-                                    байх (@$!%*?&)
+                                    <div>🏀</div> Тусгай тэмдэгтүүдийн аль
+                                    нэгийг агуулсан байх (@$!%*?&)
                                 </p>
                             </div>
                         </div>
