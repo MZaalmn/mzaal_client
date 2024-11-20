@@ -1,19 +1,21 @@
-.body
-{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background-color: rgb(208, 208, 208);   
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-.main_container
-{
-    align-items: center;
-    flex-direction: row;
-    border: 2px solid green;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    height: 200px;
-    width: 200px;
+main {
+  flex: 1;
+}
 
-
+footer {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 20px;
+  text-align: center;
 }
