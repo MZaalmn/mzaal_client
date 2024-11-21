@@ -53,7 +53,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center gap-10 mt-16">
+        <div className="flex justify-center items-center gap-10 my-16">
             <div className="w-full max-w-md flex flex-col items-center bg-white shadow-lg rounded-lg p-8 dark:bg-gray-800">
                 <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6 dark:text-gray-100">
                     Нэвтрэх

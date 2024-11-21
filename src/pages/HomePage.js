@@ -45,6 +45,8 @@
 import React, { useEffect, useState } from "react";
 import HallsSection from "../components/halls/HallsSection";
 import SaledHallsSection from "../components/saledHalls/saledHallsSection";
+import NewsSection from "../components/news/NewsSection";
+import AddNewsSection from "../components/news/AddNewsSection";
 
 const HomePage = () => {
     const [role, setRole] = useState("");
@@ -76,6 +78,8 @@ const HomePage = () => {
             )}
             <SaledHallsSection />
             <HallsSection />
+            <AddNewsSection />
+            <NewsSection />
         </div>
     );
 };

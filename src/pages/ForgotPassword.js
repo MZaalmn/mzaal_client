@@ -56,7 +56,7 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div className="flex justify-center items-center mt-16">
+        <div className="flex justify-center items-center my-16">
             <div className="max-w-md w-full bg-white p-6 rounded-lg shadow-lg">
                 {step === 1 && (
                     <div>

@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import AskLoginOrRegister from "./pages/AskLogin_or_Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
+import CreateNewsPage from "./components/news/CreateNewsPage";
 
 function App() {
     return (
@@ -35,6 +36,7 @@ function App() {
                         path="/askLogin-or-register"
                         element={<AskLoginOrRegister />}
                     />
+                    <Route path="/createNews" element={<CreateNewsPage />} />
 
                     {/* Protected routes */}
                     <Route
@@ -50,6 +52,5 @@ function App() {
         </BrowserRouter>
     );
 }
-
 
 export default App;
