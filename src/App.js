@@ -9,6 +9,7 @@ import AskLoginOrRegister from "./pages/AskLogin_or_Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
 import CreateNewsPage from "./components/news/CreateNewsPage";
+import NewsDetail from "./pages/newsDetail/NewsDetail";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                     />
 
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/newsDetail" element={<NewsDetail />} />
                     <Route
                         path="/forgot-password"
                         element={<ForgotPassword />}
