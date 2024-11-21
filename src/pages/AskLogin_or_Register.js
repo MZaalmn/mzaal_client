@@ -7,6 +7,21 @@ const AskLoginOrRegister = () => {
         
         <body className="body">
             <div className="main_container">
+                <div className="small_container">
+
+
+
+
+                    <div className="left_side">
+
+                    </div>
+
+
+                    <div className="right_side">
+
+                    </div>
+
+                </div>
 
             </div>
             
