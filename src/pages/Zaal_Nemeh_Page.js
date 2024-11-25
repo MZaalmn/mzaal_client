@@ -5,6 +5,9 @@ import basketball_icon from '../icons/basketball_icon.png';
 import volleyball_icon from '../icons/volleyball_icon.png';
 import football_icon from '../icons/football_icon.png';
 import baseball_ball_icon from '../icons/baseball_ball_icon.png';
+import badminton_ball_icon from '../icons/badminton_ball_icon.png';
+import billiard_ball_icon from '../icons/billiard_ball_icon.png';
+import shireenii_tennis_icon from '../icons/shireenii_tennis_icon.png';
 
 const Zaal_Nemeh_Page = () => {
     return (
@@ -135,6 +138,51 @@ const Zaal_Nemeh_Page = () => {
 
                         <div className="checkbox_container_item  ">                             {/* Baseball checkbox */}  
                             <img src={baseball_ball_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Badminton checkbox */}  
+                            <img src={badminton_ball_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Billiard checkbox */}  
+                            <img src={billiard_ball_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Ширээний теннис checkbox */}  
+                            <img src={shireenii_tennis_icon} height={50} width={50} alt="My Image"/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
