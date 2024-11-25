@@ -14,6 +14,7 @@ import FAQ from "./pages/namka/faqPage";
 import Help from "./pages/namka/HelpPage";
 import Profile from "./pages/namka/ProfilePage";
 
+import NewsDetail from "./pages/newsDetail/NewsDetail";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                     />
 
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/newsDetail" element={<NewsDetail />} />
                     <Route
                         path="/forgot-password"
                         element={<ForgotPassword />}
