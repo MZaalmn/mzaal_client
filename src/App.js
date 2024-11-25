@@ -9,6 +9,11 @@ import AskLoginOrRegister from "./pages/AskLogin_or_Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
 import CreateNewsPage from "./components/news/CreateNewsPage";
+import About from "./pages/namka/AboutPage";
+import FAQ from "./pages/namka/faqPage";
+import Help from "./pages/namka/HelpPage";
+import Profile from "./pages/namka/ProfilePage";
+
 
 function App() {
     return (
@@ -37,6 +42,10 @@ function App() {
                         element={<AskLoginOrRegister />}
                     />
                     <Route path="/createNews" element={<CreateNewsPage />} />
+                    <Route path="/about-us" element={<About />} />
+                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/help" element={<Help />} />
+                    <Route path="/profile" element={<Profile />} />
 
                     {/* Protected routes */}
                     <Route
