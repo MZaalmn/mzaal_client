@@ -1,8 +1,8 @@
 // src/pages/AskLogin_or_Register.js
 import React from "react";
-import '../Css_files/AskLoginOrRegister.css';
+import '../Css_files/Zaal_nemeh_page.css';
 
-const AskLoginOrRegister = () => {
+const Zaal_Nemeh_Page = () => {
     return (
         
         <body className="body">
@@ -96,4 +96,4 @@ const AskLoginOrRegister = () => {
     );
 };
 
-export default AskLoginOrRegister;
+export default Zaal_Nemeh_Page;
