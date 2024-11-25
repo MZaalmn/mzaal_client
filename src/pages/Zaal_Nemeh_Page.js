@@ -8,6 +8,15 @@ import baseball_ball_icon from '../icons/baseball_ball_icon.png';
 import badminton_ball_icon from '../icons/badminton_ball_icon.png';
 import billiard_ball_icon from '../icons/billiard_ball_icon.png';
 import shireenii_tennis_icon from '../icons/shireenii_tennis_icon.png';
+import bujgiin_zaal_icon from '../icons/bujgiin_zaal_icon.png';
+import wifi_icon from '../icons/wifi_icon.png';
+import noiliin_oroo_icon from '../icons/noiliin_oroo_icon.png';
+import suudal_icon from '../icons/suudal_icon.png';
+import mashinii_zogsool_icon from '../icons/mashinii_zogsool_icon.png';
+import huvtsas_solih_oroo_icon from '../icons/huvtsas_solih_oroo_icon.png';
+import onoonii_sambar_icon from '../icons/onoonii_sambar_icon.png';
+
+
 
 const Zaal_Nemeh_Page = () => {
     return (
@@ -183,6 +192,96 @@ const Zaal_Nemeh_Page = () => {
 
                         <div className="checkbox_container_item  ">                             {/* Ширээний теннис checkbox */}  
                             <img src={shireenii_tennis_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Бүжгийн заал checkbox */}  
+                            <img src={bujgiin_zaal_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Үнэгүй заал checkbox */}  
+                            <img src={wifi_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Нойлийн өрөө checkbox */}  
+                            <img src={noiliin_oroo_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Суудал checkbox */}  
+                            <img src={suudal_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Машиний зогсоол checkbox */}  
+                            <img src={mashinii_zogsool_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Хувцас солих өрөө checkbox */}  
+                            <img src={huvtsas_solih_oroo_icon} height={50} width={50} alt="My Image"/>
+                            <input 
+                                type="checkbox" 
+                                class="w-6 h-6 scale-140 "
+                            />
+                        </div>
+
+
+
+                        <div className="checkbox_container_item  ">                             {/* Онооний самбар checkbox */}  
+                            <img src={onoonii_sambar_icon} height={50} width={50} alt="My Image"/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
