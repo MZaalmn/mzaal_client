@@ -3,9 +3,6 @@ body {
   align-items: center;
 }
 
-
-
-
 .main_container {
   display: flex;
   align-items: center;
@@ -41,7 +38,7 @@ body {
   flex-direction: column;
   align-items: first baseline;
   width: 300px;
-  border: 1px solid rgb(226, 16, 16);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
 }
 
@@ -55,19 +52,22 @@ input.zaalnii_ner::placeholder {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  border: 1px solid greenyellow;
+  justify-content: space-evenly;
+  border: 1px solid rgb(0, 0, 0);
   height: 100px;
-  width: 400px;
+  width: 800px;
 }
 
 
-.basket_ball_container
+.checkbox_container_item          /**/
 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  border: 1px solid rgb(45, 112, 228);
+  height: 100px;
+  width: 60px;
 }
 
 
