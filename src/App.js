@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import ForgotPassword from "./pages/ForgotPassword";
-import AskLoginOrRegister from "./pages/AskLogin_or_Register";
+import Zaal_Nemeh_Page from "./pages/Zaal_Nemeh_Page";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
 import CreateNewsPage from "./components/news/CreateNewsPage";
@@ -40,8 +40,8 @@ function App() {
                         element={<ForgotPassword />}
                     />
                     <Route
-                        path="/askLogin-or-register"
-                        element={<AskLoginOrRegister />}
+                        path="/zaal_Nemeh_Page"
+                        element={<Zaal_Nemeh_Page />}
                     />
                     <Route path="/createNews" element={<CreateNewsPage />} />
                     <Route path="/about-us" element={<About />} />
