@@ -28,21 +28,23 @@ export default function FAQ() {
     };
 
     return (
-        <div>
-            <main className="container mx-auto my-8">
-                <h1 className="text-2xl font-bold mb-6">Түгээмэл асуултууд</h1>
-                <div className="grid grid-cols-3 gap-6">
+        <div className="bg-gray-100 min-h-screen">
+            <main className="container mx-auto py-8 px-4 lg:px-0">
+                <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Түгээмэл асуултууд</h1>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* FAQ Section */}
-                    <div className="col-span-2">
+                    <div className="lg:col-span-2 space-y-4">
                         {faqData.map((item, index) => (
                             <div
                                 key={index}
-                                className="border-b last:border-b-0"
+                                className={`border rounded shadow-sm ${
+                                    openIndex === index ? 'bg-white' : 'bg-gray-50'
+                                }`}
                             >
                                 <button
-                                    className={`w-full text-left p-4 ${
+                                    className={`w-full text-left p-4 focus:outline-none transition-all ${
                                         openIndex === index
-                                            ? 'bg-red-100 text-red-600'
+                                            ? 'text-red-600 font-semibold'
                                             : 'text-gray-700'
                                     }`}
                                     onClick={() => toggleFAQ(index)}
@@ -50,7 +52,7 @@ export default function FAQ() {
                                     {item.question}
                                 </button>
                                 {openIndex === index && (
-                                    <div className="p-4 bg-gray-50 text-gray-600">
+                                    <div className="p-4 text-gray-600 border-t bg-gray-50">
                                         {item.answer}
                                     </div>
                                 )}
@@ -59,42 +61,42 @@ export default function FAQ() {
                     </div>
 
                     {/* Feedback Section */}
-                    <div className="bg-yellow-100 p-6 rounded shadow">
-                        <h2 className="text-lg font-bold mb-4">
+                    <div className="bg-yellow-50 p-6 rounded-lg shadow-md">
+                        <h2 className="text-xl font-bold mb-4 text-gray-800">
                             Санал хүсэлт илгээнэ үү
                         </h2>
                         <form className="space-y-4">
                             <div>
-                                <label className="block text-sm mb-1">
+                                <label className="block text-sm font-medium text-gray-700">
                                     Имэйл хаяг
                                 </label>
                                 <input
                                     type="email"
-                                    className="w-full p-2 border rounded"
+                                    className="w-full p-3 border rounded-lg focus:ring focus:ring-yellow-300"
                                     placeholder="Таны имэйл"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm mb-1">Сэдэв</label>
+                                <label className="block text-sm font-medium text-gray-700">Сэдэв</label>
                                 <input
                                     type="text"
-                                    className="w-full p-2 border rounded"
+                                    className="w-full p-3 border rounded-lg focus:ring focus:ring-yellow-300"
                                     placeholder="Таны саналын сэдэв"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm mb-1">
+                                <label className="block text-sm font-medium text-gray-700">
                                     Мессеж
                                 </label>
                                 <textarea
-                                    className="w-full p-2 border rounded"
+                                    className="w-full p-3 border rounded-lg focus:ring focus:ring-yellow-300"
                                     rows="4"
                                     placeholder="Мессежээ бичнэ үү..."
                                 ></textarea>
                             </div>
                             <button
                                 type="submit"
-                                className="bg-red-500 text-white w-full py-2 rounded"
+                                className="bg-red-500 text-white py-2 px-4 w-full rounded-lg hover:bg-red-600 transition-all"
                             >
                                 Илгээх →
                             </button>
