@@ -92,7 +92,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                              {/* Сагсан бөмбөг checkbox */}           
-                            <img src={basketball_icon} height={50} width={50} alt="My Image"/>
+                            <img src={basketball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-130 "
@@ -110,7 +110,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Volleyball checkbox */}  
-                            <img src={volleyball_icon} height={50} width={50} alt="My Image"/>
+                            <img src={volleyball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -131,7 +131,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Хөл бөмбөг checkbox */}  
-                            <img src={football_icon} height={50} width={50} alt="My Image"/>
+                            <img src={football_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -146,7 +146,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Baseball checkbox */}  
-                            <img src={baseball_ball_icon} height={50} width={50} alt="My Image"/>
+                            <img src={baseball_ball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -162,7 +162,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Badminton checkbox */}  
-                            <img src={badminton_ball_icon} height={50} width={50} alt="My Image"/>
+                            <img src={badminton_ball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -176,7 +176,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Billiard checkbox */}  
-                            <img src={billiard_ball_icon} height={50} width={50} alt="My Image"/>
+                            <img src={billiard_ball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -191,7 +191,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Ширээний теннис checkbox */}  
-                            <img src={shireenii_tennis_icon} height={50} width={50} alt="My Image"/>
+                            <img src={shireenii_tennis_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -205,7 +205,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Бүжгийн заал checkbox */}  
-                            <img src={bujgiin_zaal_icon} height={50} width={50} alt="My Image"/>
+                            <img src={bujgiin_zaal_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -219,7 +219,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Үнэгүй заал checkbox */}  
-                            <img src={wifi_icon} height={50} width={50} alt="My Image"/>
+                            <img src={wifi_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -234,7 +234,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Нойлийн өрөө checkbox */}  
-                            <img src={noiliin_oroo_icon} height={50} width={50} alt="My Image"/>
+                            <img src={noiliin_oroo_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -247,7 +247,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Суудал checkbox */}  
-                            <img src={suudal_icon} height={50} width={50} alt="My Image"/>
+                            <img src={suudal_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -258,7 +258,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Машиний зогсоол checkbox */}  
-                            <img src={mashinii_zogsool_icon} height={50} width={50} alt="My Image"/>
+                            <img src={mashinii_zogsool_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -271,7 +271,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Хувцас солих өрөө checkbox */}  
-                            <img src={huvtsas_solih_oroo_icon} height={50} width={50} alt="My Image"/>
+                            <img src={huvtsas_solih_oroo_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
@@ -281,7 +281,7 @@ const Zaal_Nemeh_Page = () => {
 
 
                         <div className="checkbox_container_item  ">                             {/* Онооний самбар checkbox */}  
-                            <img src={onoonii_sambar_icon} height={50} width={50} alt="My Image"/>
+                            <img src={onoonii_sambar_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
                                 class="w-6 h-6 scale-140 "
