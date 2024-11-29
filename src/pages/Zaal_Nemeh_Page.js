@@ -33,10 +33,10 @@ const Zaal_Nemeh_Page = () => {
                 <form className="small_container">
                     <h1 className="text-4xl font-bold">Заал нэмэх</h1>
 
-                    <div className='zaalnii_ner'>
+                    <div className='input_container'>
                         <h2>Заалны нэр</h2>
                         <input
-                            className='zaalnii_ner'
+                            className='input_field'
                             placeholder='Та өөрийн заалны нэрийг оруулна уу'
                             type="text"
                             required
@@ -46,10 +46,10 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-                    <div className='hayg'>
+                    <div className='input_container'>
                         <h2>Хаяг</h2>
                         <input
-                            className='zaalnii_ner'
+                            className='input_field'
                             placeholder='Заалны дэлгэрэнгүй хаяг'
                             type="text"
                             required
@@ -62,10 +62,10 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-                    <div className='hayg'>
+                    <div className='input_container'>
                         <h2>Заалны нэг цагийн үнэ</h2>
                         <input
-                            className='zaalnii_ner'
+                            className='input_field'
                             placeholder='Тухайн заалны нэг цагын үнэ'
                             type="text"
                             required
@@ -76,10 +76,10 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-                    <div className='hayg'>
+                    <div className='input_container'>
                         <h2>Хөнгөлөлтийн хувь</h2>
                         <input
-                            className='zaalnii_ner'
+                            className='input_field'
                             placeholder='10%, 25% гэх мэт'
                             type="text"
                             required
