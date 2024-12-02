@@ -47,10 +47,10 @@ const Zaal_Nemeh_Page = () => {
 
 
                     <div className='input_container'>
-                        <h2>Хаяг</h2>
+                        <h2>Дэлгэрэнгүй мэдээлэл</h2>
                         <input
                             className='input_field'
-                            placeholder='Заалны дэлгэрэнгүй хаяг'
+                            placeholder='Заалны дэлгэрэнгүй мэдээлэл'
                             type="text"
                             required
                         />
@@ -76,15 +76,7 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-                    <div className='input_container'>
-                        <h2>Хөнгөлөлтийн хувь</h2>
-                        <input
-                            className='input_field'
-                            placeholder='10%, 25% гэх мэт'
-                            type="text"
-                            required
-                        />
-                    </div>
+                   
 
                     <div className="checkbox_container">
 
@@ -288,6 +280,31 @@ const Zaal_Nemeh_Page = () => {
                             />
                         </div>
 
+                    </div>
+
+
+
+                    <div className='input_container'>
+                        <h2>Заалны байршил </h2>
+                        <input
+                            className='input_field'
+                            placeholder='УБ хот, 12-р байр гэх мэт'
+                            type="text"
+                            required
+                        />
+                    </div>
+
+
+
+
+                    <div className='input_container'>
+                        <h2>Заалны зураг сонгох</h2>
+                        <input
+                            className='input_field'
+                            placeholder=''
+                            type="file"
+                            required
+                        />
                     </div>
 
 
