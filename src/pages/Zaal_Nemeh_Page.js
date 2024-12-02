@@ -1,5 +1,10 @@
 // src/pages/AskLogin_or_Register.js
 import React from "react";
+import  { useState } from "react";
+import axios from 'axios';
+
+import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+
 import '../Css_files/Zaal_nemeh_page.css';
 import basketball_icon from '../icons/basketball_icon.png';
 import volleyball_icon from '../icons/volleyball_icon.png';
@@ -18,7 +23,81 @@ import onoonii_sambar_icon from '../icons/onoonii_sambar_icon.png';
 
 
 
+
+
+
+
+
+
+
+//Google maps container өндөр өргөний хэмжээ
+const mapContainerStyle = {
+    width: '500px',
+    height: '400px',
+  };
+///
+
+//Эхлэх цэг
+const center = {
+    lat: 47.921230, 
+    lng: 106.918556, 
+  };
+//////////////
+
+
+
+
+
+
+
+
+
 const Zaal_Nemeh_Page = () => {
+    const [title, set_Title] = useState('');                     {/* 1.Шаардлага               */}
+    const [description, set_description] = useState('');         {/* 2.Мэдээлэл                */}
+    const [une, set_une] = useState('');                         {/* 3.Үнэ                     */}
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    
+        axios.post('http://localhost:8000/create_job', {title, description,une})
+          .then(result => {
+            console.log(result);
+            if (result.data === "Already registered") {
+              alert("Бүртгэлтай хаяг байна");
+            } else {
+    
+            }
+          })
+          .catch(err => console.log(err));
+    }
+
+
+    const [location, setLocation] = useState(null);
+    const [name, setName] = useState('');
+    const [searchName, setSearchName] = useState('');
+    const [searchResult, setSearchResult] = useState(null);
+    const [map, setMap] = useState(null);
+
+
+
+
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: 'AIzaSyBFJ0YbjuM4DrWqq88oHVIOk7W3D8Q4g_k',
+      });
+
+    if (!isLoaded) return <div>Loading...</div>;
+
+
+
+    const handleMapClick = (event) => {
+        setLocation({
+          lat: event.latLng.lat(),
+          lng: event.latLng.lng(),
+        });
+    };
+
     return (
         
         <body className="body">
@@ -30,7 +109,7 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-                <form className="small_container">
+                <form className="small_container " onSubmit={handleSubmit}>
                     <h1 className="text-4xl font-bold">Заал нэмэх</h1>
 
                     <div className='input_container'>
@@ -40,6 +119,7 @@ const Zaal_Nemeh_Page = () => {
                             placeholder='Та өөрийн заалны нэрийг оруулна уу'
                             type="text"
                             required
+                            onChange={(event) => set_Title(event.target.value)}                 //1.Заалны нэр
                         />
                     </div>
 
@@ -53,6 +133,7 @@ const Zaal_Nemeh_Page = () => {
                             placeholder='Заалны дэлгэрэнгүй мэдээлэл'
                             type="text"
                             required
+                            onChange={(event) => set_description(event.target.value)}             //2.Заалны дэлгэрэнгүй мэдээлэл
                         />
                     </div>
 
@@ -61,23 +142,25 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-
+                    
                     <div className='input_container'>
                         <h2>Заалны нэг цагийн үнэ</h2>
                         <input
                             className='input_field'
                             placeholder='Тухайн заалны нэг цагын үнэ'
-                            type="text"
+                            type="number"
                             required
+                            onChange={(event) => set_une(event.target.value)}                      //3.Заалны нэг цагын үнэ
                         />
                     </div>
+                    
 
 
 
 
 
                    
-
+                    
                     <div className="checkbox_container">
 
 
@@ -281,6 +364,7 @@ const Zaal_Nemeh_Page = () => {
                         </div>
 
                     </div>
+                    
 
 
 
@@ -290,7 +374,7 @@ const Zaal_Nemeh_Page = () => {
                             className='input_field'
                             placeholder='УБ хот, 12-р байр гэх мэт'
                             type="text"
-                            required
+                            
                         />
                     </div>
 
@@ -303,9 +387,47 @@ const Zaal_Nemeh_Page = () => {
                             className='input_field'
                             placeholder=''
                             type="file"
-                            required
+                            accept="image/*"
+                            multiple
+                            
                         />
                     </div>
+
+
+                    <GoogleMap
+                        mapContainerStyle={mapContainerStyle} //Border урт, өргөн
+                        zoom={12}
+                        center={center}
+                        onClick={handleMapClick}
+                        onLoad={(map) => setMap(map)}
+                    >
+                        {location && <Marker position={location} />}
+                    </GoogleMap>
+
+
+
+
+
+
+                    <div className='input_container_for_save_button'>
+                        
+                        <button class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ">
+                            Хадгалах
+                        </button>
+
+                    </div>
+
+
+
+
+
+
+
+
+                    
+
+
+                    
 
 
                    

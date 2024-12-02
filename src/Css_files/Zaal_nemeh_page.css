@@ -7,7 +7,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 680px;
+  height: 1200px;
 }
 
 .small_container
@@ -18,7 +18,6 @@ body {
   justify-content: space-evenly;
   height: 100%;
   width: 60%;
-  border: 1px solid rgb(0, 0, 0);
 }
 
 
@@ -86,8 +85,22 @@ input.zaalnii_ner::placeholder {
   justify-content: space-evenly;
   height: 100px;
   width: 60px;
+}
+
+
+.input_container_for_save_button                        
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: last baseline;
+  width: 100%;
+  height: 70px;
+  border-radius: 5px;
 
 }
+
+
 
 
 
