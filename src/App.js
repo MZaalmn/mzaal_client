@@ -13,6 +13,7 @@ import About from "./pages/namka/AboutPage";
 import FAQ from "./pages/namka/faqPage";
 import Help from "./pages/namka/HelpPage";
 import Profile from "./pages/namka/ProfilePage";
+import Test from "./pages/Test";
 
 import NewsDetail from "./pages/newsDetail/NewsDetail";
 
@@ -48,6 +49,7 @@ function App() {
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/help" element={<Help />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/test" element={<Test />} />
 
                     {/* Protected routes */}
                     <Route

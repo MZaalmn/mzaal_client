@@ -58,10 +58,22 @@ const Zaal_Nemeh_Page = () => {
     const [une, set_une] = useState('');                         {/* 3.Үнэ                     */}
 
 
+
+    const [location, setLocation] = useState(null);
+    const [name, setName] = useState('');
+    const [searchName, setSearchName] = useState('');
+    const [searchResult, setSearchResult] = useState(null);
+    const [map, setMap] = useState(null);
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
     
-        axios.post('http://localhost:8000/create_job', {title, description,une})
+        axios.post('http://localhost:8000/create_job', {title,description,une,latitude: location.lat,longitude: location.lng,
+           
+        }
+
+        )
           .then(result => {
             console.log(result);
             if (result.data === "Already registered") {
@@ -74,11 +86,7 @@ const Zaal_Nemeh_Page = () => {
     }
 
 
-    const [location, setLocation] = useState(null);
-    const [name, setName] = useState('');
-    const [searchName, setSearchName] = useState('');
-    const [searchResult, setSearchResult] = useState(null);
-    const [map, setMap] = useState(null);
+    
 
 
 
