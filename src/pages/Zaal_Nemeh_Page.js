@@ -57,15 +57,19 @@ const Zaal_Nemeh_Page = () => {
     const [description, set_description] = useState('');         {/* 2.Мэдээлэл                */}
     const [une, set_une] = useState('');                         {/* 3.Үнэ                     */}
 
+    const [images, setImages] = useState([]);
+
+    const [age, setAge] = useState("");
+    const [name, setName] = useState('');
+
 
 
     const [location, setLocation] = useState(null);
-    const [name, setName] = useState('');
     const [searchName, setSearchName] = useState('');
     const [searchResult, setSearchResult] = useState(null);
     const [map, setMap] = useState(null);
 
-
+/*------------------------------------>>>>>>>real
     const handleSubmit = (event) => {
         event.preventDefault();
     
@@ -83,7 +87,37 @@ const Zaal_Nemeh_Page = () => {
             }
           })
           .catch(err => console.log(err));
+    }*/
+
+
+    const handleSubmit = async (event) => {                        //---------------------------------test
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("une", une);
+        formData.append("latitude", location.lat);
+        formData.append("longitude", location.lng);
+        //latitude: location.lat,
+        Array.from(images).forEach((image) => {
+            formData.append("images", image);
+          });
+        console.log(title);
+        console.log(description);
+        console.log(une);
+        event.preventDefault();
+    
+        await axios.post("http://localhost:8000/create_job", formData, {
+            headers: { "Content-Type": "multipart/form-data" },
+          });
+          
     }
+
+
+
+    const handleImageChange = (e) => {
+        setImages(e.target.files);
+      };
+    
 
 
     
@@ -126,6 +160,7 @@ const Zaal_Nemeh_Page = () => {
                             className='input_field'
                             placeholder='Та өөрийн заалны нэрийг оруулна уу'
                             type="text"
+                            value={title}
                             required
                             onChange={(event) => set_Title(event.target.value)}                 //1.Заалны нэр
                         />
@@ -141,6 +176,7 @@ const Zaal_Nemeh_Page = () => {
                             placeholder='Заалны дэлгэрэнгүй мэдээлэл'
                             type="text"
                             required
+                            value={description}
                             onChange={(event) => set_description(event.target.value)}             //2.Заалны дэлгэрэнгүй мэдээлэл
                         />
                     </div>
@@ -157,10 +193,21 @@ const Zaal_Nemeh_Page = () => {
                             className='input_field'
                             placeholder='Тухайн заалны нэг цагын үнэ'
                             type="number"
-                            required
+                            value={une}
+                           
                             onChange={(event) => set_une(event.target.value)}                      //3.Заалны нэг цагын үнэ
                         />
                     </div>
+
+                    <div>
+          <label>Upload 3 Images:</label>
+          <input
+            type="file"
+            accept="image/*"
+            multiple
+            onChange={handleImageChange}
+          />
+        </div>
                     
 
 

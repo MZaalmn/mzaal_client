@@ -36,6 +36,7 @@ function Welcome() {
             key={key}
             className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
           >
+            
             <h4 className="text-xl font-semibold mb-2">{job.title}</h4>
             <p className="text-gray-700 mb-2">{job.description}</p>
             <p className="text-gray-800 font-medium mb-4">Price: {job.une}</p>
@@ -53,6 +54,7 @@ function Welcome() {
                 <Marker position={{ lat: job.latitude, lng: job.longitude }} />
               </GoogleMap>
             </div>
+            <img src={job.images[0]} alt="Image 1" width="300" height="300"/>
           </div>
         ))}
       </div>
