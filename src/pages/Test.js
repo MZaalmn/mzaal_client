@@ -28,39 +28,42 @@ function Welcome() {
   return (
     <div className="bg-gray-100 min-h-screen p-4">
 
-  {/* Grid container */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-    {medeelluud.map((job, key) => (
-      <div
-        key={key}
-        className="bg-white shadow-md rounded-lg p-2 border border-gray-200"
-      >
-        <img 
-          src={job.images[0]} 
-          alt="Job Image" 
-          className="w-full h-[200px] object-cover rounded-lg"
-        />
-        <h4 className="text-lg font-medium mb-1">{job.title}</h4>
-        <p className="text-gray-700 text-sm mb-1">{job.description}</p>
-        <p className="text-gray-800 font-medium text-sm mb-2">Price: {job.une}</p>
+  {/* Grid container with horizontal padding */}
+  <div className="px-16 sm:px-20 lg:px-24 grid grid-cols-10 sm:grid-cols-10 lg:grid-cols-3 gap-10">
+  {medeelluud.map((job, key) => (
+    <div
+      key={key}
+      className="bg-white shadow-md rounded-lg p-4 border border-gray-200" // Updated padding
+    >
+      <img 
+        src={job.images[0]} 
+        alt="Job Image" 
+        className="w-full h-[230px] object-cover rounded-lg mb-4" // Added bottom margin
+      />
+      <h4 className="text-lg font-medium mb-2">{job.title}</h4> 
+      <p className="text-lg text-blue-500 font-medium mb-2">₮{job.une} / 1 цаг </p>
+      <p className="text-gray-700 text-sm mb-4">{job.description}</p> 
 
-        {/* Map */}
-        <div className="overflow-hidden rounded-lg">
-          <GoogleMap
-            mapContainerStyle={{ width: '100%', height: '150px' }}
-            zoom={12}
-            center={{
-              lat: job.latitude,
-              lng: job.longitude,
-            }}
-          >
-            <Marker position={{ lat: job.latitude, lng: job.longitude }} />
-          </GoogleMap>
-        </div>
+      {/* Map 
+      <div className="overflow-hidden rounded-lg">
+        <GoogleMap
+          mapContainerStyle={{ width: '100%', height: '150px' }}
+          zoom={12}
+          center={{
+            lat: job.latitude,
+            lng: job.longitude,
+          }}
+        >
+          <Marker position={{ lat: job.latitude, lng: job.longitude }} />
+        </GoogleMap>
       </div>
-    ))}
-  </div>
+      */}
+    </div>
+  ))}
 </div>
+
+</div>
+
 
   );
 }
