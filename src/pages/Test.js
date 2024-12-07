@@ -27,38 +27,41 @@ function Welcome() {
 
   return (
     <div className="bg-gray-100 min-h-screen p-4">
-      <h1 className="text-2xl font-bold text-center mb-6">Job Listings</h1>
 
-      {/* Grid container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {medeelluud.map((job, key) => (
-          <div
-            key={key}
-            className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
+  {/* Grid container */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {medeelluud.map((job, key) => (
+      <div
+        key={key}
+        className="bg-white shadow-md rounded-lg p-2 border border-gray-200"
+      >
+        <img 
+          src={job.images[0]} 
+          alt="Job Image" 
+          className="w-full h-[200px] object-cover rounded-lg"
+        />
+        <h4 className="text-lg font-medium mb-1">{job.title}</h4>
+        <p className="text-gray-700 text-sm mb-1">{job.description}</p>
+        <p className="text-gray-800 font-medium text-sm mb-2">Price: {job.une}</p>
+
+        {/* Map */}
+        <div className="overflow-hidden rounded-lg">
+          <GoogleMap
+            mapContainerStyle={{ width: '100%', height: '150px' }}
+            zoom={12}
+            center={{
+              lat: job.latitude,
+              lng: job.longitude,
+            }}
           >
-            
-            <h4 className="text-xl font-semibold mb-2">{job.title}</h4>
-            <p className="text-gray-700 mb-2">{job.description}</p>
-            <p className="text-gray-800 font-medium mb-4">Price: {job.une}</p>
-
-            {/* Map */}
-            <div className="overflow-hidden rounded-lg">
-              <GoogleMap
-                mapContainerStyle={mapContainerStyle}
-                zoom={12}
-                center={{
-                  lat: job.latitude,
-                  lng: job.longitude,
-                }}
-              >
-                <Marker position={{ lat: job.latitude, lng: job.longitude }} />
-              </GoogleMap>
-            </div>
-            <img src={job.images[0]} alt="Image 1" width="300" height="300"/>
-          </div>
-        ))}
+            <Marker position={{ lat: job.latitude, lng: job.longitude }} />
+          </GoogleMap>
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 }
 

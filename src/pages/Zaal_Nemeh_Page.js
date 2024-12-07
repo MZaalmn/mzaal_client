@@ -59,14 +59,7 @@ const Zaal_Nemeh_Page = () => {
 
     const [images, setImages] = useState([]);
 
-    const [age, setAge] = useState("");
-    const [name, setName] = useState('');
-
-
-
     const [location, setLocation] = useState(null);
-    const [searchName, setSearchName] = useState('');
-    const [searchResult, setSearchResult] = useState(null);
     const [map, setMap] = useState(null);
 
 /*------------------------------------>>>>>>>real
