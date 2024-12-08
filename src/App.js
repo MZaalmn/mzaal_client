@@ -14,6 +14,7 @@ import FAQ from "./pages/namka/faqPage";
 import Help from "./pages/namka/HelpPage";
 import Profile from "./pages/namka/ProfilePage";
 import Test from "./pages/Test";
+import Seeing_Zaal_Info from "./pages/Seeing_Zaal_Info";
 
 import NewsDetail from "./pages/newsDetail/NewsDetail";
 
@@ -50,6 +51,7 @@ function App() {
                     <Route path="/help" element={<Help />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/test" element={<Test />} />
+                    <Route path="/seeing_Zaal_Info" element={<Seeing_Zaal_Info />} />
 
                     {/* Protected routes */}
                     <Route
