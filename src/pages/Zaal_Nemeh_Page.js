@@ -61,6 +61,14 @@ const Zaal_Nemeh_Page = () => {
 
     const [location, setLocation] = useState(null);
     const [map, setMap] = useState(null);
+    const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedOptions((prev) =>
+      checked ? [...prev, value] : prev.filter((item) => item !== value)
+    );
+  };
 
 /*------------------------------------>>>>>>>real
     const handleSubmit = (event) => {
@@ -93,10 +101,19 @@ const Zaal_Nemeh_Page = () => {
         //latitude: location.lat,
         Array.from(images).forEach((image) => {
             formData.append("images", image);
-          });
-        console.log(title);
-        console.log(description);
-        console.log(une);
+        });
+
+
+        Array.from(selectedOptions).forEach((selectedOptions) => {
+            formData.append("selectedOptions", selectedOptions);
+        })
+
+
+
+    
+        console.log(images);
+        console.log(selectedOptions);
+        
         event.preventDefault();
     
         await axios.post("http://localhost:8000/create_job", formData, {
@@ -201,6 +218,39 @@ const Zaal_Nemeh_Page = () => {
             onChange={handleImageChange}
           />
         </div>
+        <label>
+        <input
+          type="checkbox"
+          value="volleyball"
+          onChange={handleCheckboxChange}
+        />
+        Volleyball
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          value="basketball"
+          onChange={handleCheckboxChange}
+        />
+        Basketball
+      </label>
+      <label>
+        <input type="checkbox" value="billiard" onChange={handleCheckboxChange} />
+        Billiard
+      </label>
+
+
+
+
+
+      <label>
+        <input
+          type="checkbox"
+          value="parking_slot"
+          onChange={handleCheckboxChange}
+        />
+        Parking Slot
+      </label>
                     
 
 
@@ -218,6 +268,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={basketball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="muhehehe"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-130 "
                             />
                         </div>

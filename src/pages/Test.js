@@ -99,6 +99,7 @@ function Welcome() {
         alt="Volleyball Icon"
       />
     )}
+    
 
   
   </div>
@@ -107,6 +108,7 @@ function Welcome() {
       <h4 className="text-lg font-medium mb-2">{job.title}</h4> 
       <p className="text-lg text-blue-500 font-medium mb-2">₮{job.une} / 1 цаг </p>
       <p className="text-gray-700 text-sm mb-4">{job.description}</p> 
+      
 
 
       <button onClick={() => handleEditClick(job._id)}>move</button>
