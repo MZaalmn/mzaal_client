@@ -41,6 +41,7 @@ const LoginPage = () => {
             );
             localStorage.setItem("authToken", response.data.token);
             localStorage.setItem("userRole", response.data.role);
+            localStorage.setItem('userEmail', formData.usernameOrEmail);
             navigate("/");
         } catch (err) {
             toast.error("Нэвтрэх нэр эсвэл нууц үг буруу байна.");

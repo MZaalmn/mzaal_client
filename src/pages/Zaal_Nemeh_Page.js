@@ -1,8 +1,8 @@
 // src/pages/AskLogin_or_Register.js
 import React from "react";
-import  { useState } from "react";
+import  { useState, useEffect } from "react";
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 
 import '../Css_files/Zaal_nemeh_page.css';
@@ -62,6 +62,8 @@ const Zaal_Nemeh_Page = () => {
     const [location, setLocation] = useState(null);
     const [map, setMap] = useState(null);
     const [zaalnii_bolomjuud, setZaalnii_Bolomjuud] = useState([]);
+    const navigate = useNavigate();
+    const [user_email, setUser_email] = useState(''); 
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
@@ -70,25 +72,19 @@ const Zaal_Nemeh_Page = () => {
     );
   };
 
-/*------------------------------------>>>>>>>real
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        axios.post('http://localhost:8000/create_job', {title,description,une,latitude: location.lat,longitude: location.lng,
-           
-        }
 
-        )
-          .then(result => {
-            console.log(result);
-            if (result.data === "Already registered") {
-              alert("Бүртгэлтай хаяг байна");
-            } else {
-    
-            }
-          })
-          .catch(err => console.log(err));
-    }*/
+
+  useEffect(() => {
+    const user_role = localStorage.getItem('userRole');
+    const email_from_application = localStorage.getItem('userEmail');
+    if (user_role === 'owner') {
+      setUser_email(email_from_application);
+    } else {
+        navigate('/');
+    }
+  }, []);
+
+
 
 
     const handleSubmit = async (event) => {                        //---------------------------------test
@@ -98,6 +94,7 @@ const Zaal_Nemeh_Page = () => {
         formData.append("une", une);
         formData.append("latitude", location.lat);
         formData.append("longitude", location.lng);
+        formData.append("email", user_email);
         //latitude: location.lat,
         Array.from(images).forEach((image) => {
             formData.append("images", image);
