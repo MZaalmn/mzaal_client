@@ -61,11 +61,11 @@ const Zaal_Nemeh_Page = () => {
 
     const [location, setLocation] = useState(null);
     const [map, setMap] = useState(null);
-    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [zaalnii_bolomjuud, setZaalnii_Bolomjuud] = useState([]);
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
-    setSelectedOptions((prev) =>
+    setZaalnii_Bolomjuud((prev) =>
       checked ? [...prev, value] : prev.filter((item) => item !== value)
     );
   };
@@ -104,15 +104,15 @@ const Zaal_Nemeh_Page = () => {
         });
 
 
-        Array.from(selectedOptions).forEach((selectedOptions) => {
-            formData.append("selectedOptions", selectedOptions);
+        Array.from(zaalnii_bolomjuud).forEach((zaalnii_bolomjuud) => {
+            formData.append("zaalnii_bolomjuud", zaalnii_bolomjuud);
         })
 
 
 
     
         console.log(images);
-        console.log(selectedOptions);
+        console.log(zaalnii_bolomjuud);
         
         event.preventDefault();
     
@@ -218,39 +218,7 @@ const Zaal_Nemeh_Page = () => {
             onChange={handleImageChange}
           />
         </div>
-        <label>
-        <input
-          type="checkbox"
-          value="volleyball"
-          onChange={handleCheckboxChange}
-        />
-        Volleyball
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          value="basketball"
-          onChange={handleCheckboxChange}
-        />
-        Basketball
-      </label>
-      <label>
-        <input type="checkbox" value="billiard" onChange={handleCheckboxChange} />
-        Billiard
-      </label>
-
-
-
-
-
-      <label>
-        <input
-          type="checkbox"
-          value="parking_slot"
-          onChange={handleCheckboxChange}
-        />
-        Parking Slot
-      </label>
+        
                     
 
 
@@ -268,7 +236,7 @@ const Zaal_Nemeh_Page = () => {
                             <img src={basketball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
-                                value="muhehehe"
+                                value="Basketball"
                                 onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-130 "
                             />
@@ -288,6 +256,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={volleyball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="Volleyball"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -309,6 +279,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={football_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="Football"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -324,6 +296,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={baseball_ball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="Baseball"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -340,6 +314,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={badminton_ball_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="Badminton"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -353,7 +329,9 @@ const Zaal_Nemeh_Page = () => {
                         <div className="checkbox_container_item  ">                             {/* Billiard checkbox */}  
                             <img src={billiard_ball_icon} height={50} width={50} alt=""/>
                             <input 
-                                type="checkbox" 
+                                type="checkbox"
+                                value="Billiard"
+                                onChange={handleCheckboxChange} 
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -369,6 +347,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={shireenii_tennis_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="shireenii_tennis"
+                                onChange={handleCheckboxChange} 
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -383,6 +363,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={bujgiin_zaal_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="bujgiin_zaal"
+                                onChange={handleCheckboxChange} 
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -397,6 +379,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={wifi_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="wifi"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -412,6 +396,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={noiliin_oroo_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="noiliin_oroo"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -425,6 +411,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={suudal_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="suudal"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -436,6 +424,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={mashinii_zogsool_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="mashinii_zogsool"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -449,6 +439,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={huvtsas_solih_oroo_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="huvtsas_solih_oroo"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
@@ -459,6 +451,8 @@ const Zaal_Nemeh_Page = () => {
                             <img src={onoonii_sambar_icon} height={50} width={50} alt=""/>
                             <input 
                                 type="checkbox" 
+                                value="onoonii_sambar"
+                                onChange={handleCheckboxChange}
                                 class="w-6 h-6 scale-140 "
                             />
                         </div>
