@@ -326,4 +326,5 @@ export default AddNewsPage;
 //gtyhy5h5g4
 //123 geed negiige uzej nehii deelee yaaaydaa tailiida gehguyu
 // za ene neg l hudlaa ywaad bgam shig haragdaad bhiin
-  
+  //za bolood bh shig bnashu
+  //za nice
