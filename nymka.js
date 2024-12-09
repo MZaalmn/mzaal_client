@@ -323,4 +323,6 @@ export default AddNewsPage;
   }
   */
  //54g65h5h5h5gghe,h[15h]hy5export.js rfnu5t2iqfo4fpqub4obf9q za manaihaan goy shvv amjilt guys heduule chadnaa bolgonoo buteenee ardana garnaa6
+
+//123 geed negiige uzej nehii deelee yaaaydaa
   
