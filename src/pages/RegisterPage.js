@@ -102,7 +102,7 @@ const RegisterPage = () => {
         }
 
         try {
-            await axios.post("http://localhost:8000/users/register", formData);
+            await axios.post("http://localhost:8000/auth/register", formData);
             toast.success("Амжилттай бүртгэгдлээ!");
             navigate("/login");
         } catch (err) {
@@ -212,58 +212,52 @@ const RegisterPage = () => {
                     {formData.password ? (
                         <div className="mb-6">
                             <div className="text-sm ml-4 mt-2">
-                                <p
+                                <div
                                     className={`flex items-center gap-2 ${
                                         requirements.length
                                             ? "text-green-600"
                                             : "text-red-500"
-                                    }
-                                `}
+                                    }`}
                                 >
-                                    <div>🏀</div> 8-16 тэмдэгт
-                                </p>
-                                <p
+                                    <span>🏀</span> 8-16 тэмдэгт
+                                </div>
+                                <div
                                     className={`flex items-center gap-2 ${
                                         requirements.uppercase
                                             ? "text-green-600"
                                             : "text-red-500"
-                                    }
-                                `}
+                                    }`}
                                 >
-                                    <div>🏀</div>
-                                    Нэг том үсэг агуулсан байх
-                                </p>
-                                <p
+                                    <span>🏀</span> Нэг том үсэг агуулсан байх
+                                </div>
+                                <div
                                     className={`flex items-center gap-2 ${
                                         requirements.lowercase
                                             ? "text-green-600"
                                             : "text-red-500"
-                                    }
-                                `}
+                                    }`}
                                 >
-                                    <div>🏀</div> Нэг жижиг үсэг агуулсан байх
-                                </p>
-                                <p
+                                    <span>🏀</span> Нэг жижиг үсэг агуулсан байх
+                                </div>
+                                <div
                                     className={`flex items-center gap-2 ${
                                         requirements.number
                                             ? "text-green-600"
                                             : "text-red-500"
-                                    }
-                                `}
+                                    }`}
                                 >
-                                    <div>🏀</div> Нэг тоо агуулсан байх
-                                </p>
-                                <p
+                                    <span>🏀</span> Нэг тоо агуулсан байх
+                                </div>
+                                <div
                                     className={`flex gap-2 ${
                                         requirements.specialChar
                                             ? "text-green-600"
                                             : "text-red-500"
-                                    }
-                                `}
+                                    }`}
                                 >
-                                    <div>🏀</div> Тусгай тэмдэгтүүдийн аль
+                                    <span>🏀</span> Тусгай тэмдэгтүүдийн аль
                                     нэгийг агуулсан байх (@$!%*?&)
-                                </p>
+                                </div>
                             </div>
                         </div>
                     ) : null}

@@ -17,6 +17,7 @@ import Test from "./pages/Test";
 import Seeing_Zaal_Info from "./pages/Seeing_Zaal_Info";
 
 import NewsDetail from "./pages/newsDetail/NewsDetail";
+import AddHallPage from "./pages/addHallPage";
 
 function App() {
     return (
@@ -51,7 +52,11 @@ function App() {
                     <Route path="/help" element={<Help />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/test" element={<Test />} />
-                    <Route path="/seeing_Zaal_Info" element={<Seeing_Zaal_Info />} />
+                    <Route
+                        path="/seeing_Zaal_Info"
+                        element={<Seeing_Zaal_Info />}
+                    />
+                    <Route path="/addHall" element={<AddHallPage />} />
 
                     {/* Protected routes */}
                     <Route
