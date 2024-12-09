@@ -46,7 +46,7 @@ const LoginPage = () => {
             localStorage.setItem("userEmail", formData.usernameOrEmail);
 
             if (response.data.user.role === "owner") {
-                navigate("/zaal_nemeh_page");
+                navigate("/zaal_Ezemshigch_Nevternsii_Daraa");
             } else {
                 navigate("/");
             }
