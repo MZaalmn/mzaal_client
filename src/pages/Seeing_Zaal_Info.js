@@ -8,12 +8,17 @@ import Modal from "../components/Modal";
 
 
 const Seeing_Zaal_Info = () => {
-    const [grid, setGrid] = useState(Array(9).fill("no")); // Interactive grid for user input
     const [foodList, setFoodList] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null); // State for selected date
+
+
+
+
+    
+    const [grid, setGrid] = useState(Array(9).fill("no")); // Interactive grid for user input
     const [fetchedGrid, setFetchedGrid] = useState(Array(9).fill("no")); // Fetched grid from MongoDB
 
 
