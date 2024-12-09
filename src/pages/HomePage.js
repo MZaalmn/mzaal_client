@@ -8,13 +8,19 @@ const HomePage = () => {
     const [role, setRole] = useState("");
 
     useEffect(() => {
-        const userRole = localStorage.getItem("userRole");
-        setRole(userRole || "guest");
+        const userString = localStorage.getItem("user");
+        try {
+            const user = userString ? JSON.parse(userString) : null;
+            setRole(user?.role || "guest");
+        } catch (error) {
+            console.error("Error parsing user from localStorage", error);
+            setRole("guest");
+        }
     }, []);
 
     const handleLogout = () => {
         localStorage.removeItem("authToken");
-        localStorage.removeItem("userRole");
+        localStorage.removeItem("user");
         window.location.href = "/login";
     };
 

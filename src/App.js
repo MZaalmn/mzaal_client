@@ -9,6 +9,7 @@ import AskLoginOrRegister from "./pages/AskLogin_or_Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RedirectIfLoggedIn from "./components/RedirectIfLoggedIn";
 import CreateNewsPage from "./components/news/CreateNewsPage";
+import AddHallPage from "./pages/addHallPage";
 
 function App() {
     return (
@@ -37,6 +38,7 @@ function App() {
                         element={<AskLoginOrRegister />}
                     />
                     <Route path="/createNews" element={<CreateNewsPage />} />
+                    <Route path="/addHall" element={<AddHallPage />} />
 
                     {/* Protected routes */}
                     <Route

@@ -36,11 +36,11 @@ const LoginPage = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:8000/users/login",
+                "http://localhost:8000/auth/login",
                 formData
             );
             localStorage.setItem("authToken", response.data.token);
-            localStorage.setItem("userRole", response.data.role);
+            localStorage.setItem("user", JSON.stringify(response.data.user));
             navigate("/");
         } catch (err) {
             toast.error("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
