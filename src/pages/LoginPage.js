@@ -39,10 +39,17 @@ const LoginPage = () => {
                 "http://localhost:8000/auth/login",
                 formData
             );
+            console.log(response.data.user.role);
             localStorage.setItem("authToken", response.data.token);
+            localStorage.setItem("userRole", response.data.user.role);
             localStorage.setItem("user", JSON.stringify(response.data.user));
             localStorage.setItem("userEmail", formData.usernameOrEmail);
-            navigate("/");
+
+            if (response.data.user.role === "owner") {
+                navigate("/zaal_nemeh_page");
+            } else {
+                navigate("/");
+            }
         } catch (err) {
             toast.error("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
             setError("Нэвтрэх нэр эсвэл нууц үг буруу байна.");
