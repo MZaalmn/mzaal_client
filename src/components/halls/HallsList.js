@@ -2,30 +2,24 @@ import React, { useEffect, useState } from "react";
 import ButtonComponent from "../Button";
 import { GrCart, GrFavorite, GrSchedules } from "react-icons/gr";
 import { fetcher } from "../../utils/fetcher";
-import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 //
 
-import basketball_icon from '../../icons/basketball_icon.png';
-import volleyball_icon from '../../icons/volleyball_icon.png';
-import football_icon from '../../icons/football_icon.png';
-import baseball_ball_icon from '../../icons/baseball_ball_icon.png';
-import badminton_ball_icon from '../../icons/badminton_ball_icon.png';
-import billiard_ball_icon from '../../icons/billiard_ball_icon.png';
-import shireenii_tennis_icon from '../../icons/shireenii_tennis_icon.png';
-import bujgiin_zaal_icon from '../../icons/bujgiin_zaal_icon.png';
-import wifi_icon from '../../icons/wifi_icon.png';
-import noiliin_oroo_icon from '../../icons/noiliin_oroo_icon.png';
-import suudal_icon from '../../icons/suudal_icon.png';
-import mashinii_zogsool_icon from '../../icons/mashinii_zogsool_icon.png';
-import huvtsas_solih_oroo_icon from '../../icons/huvtsas_solih_oroo_icon.png';
-import onoonii_sambar_icon from '../../icons/onoonii_sambar_icon.png';
-
-
-
-
-
-
+import basketball_icon from "../../icons/basketball_icon.png";
+import volleyball_icon from "../../icons/volleyball_icon.png";
+import football_icon from "../../icons/football_icon.png";
+import baseball_ball_icon from "../../icons/baseball_ball_icon.png";
+import badminton_ball_icon from "../../icons/badminton_ball_icon.png";
+import billiard_ball_icon from "../../icons/billiard_ball_icon.png";
+import shireenii_tennis_icon from "../../icons/shireenii_tennis_icon.png";
+import bujgiin_zaal_icon from "../../icons/bujgiin_zaal_icon.png";
+import wifi_icon from "../../icons/wifi_icon.png";
+import noiliin_oroo_icon from "../../icons/noiliin_oroo_icon.png";
+import suudal_icon from "../../icons/suudal_icon.png";
+import mashinii_zogsool_icon from "../../icons/mashinii_zogsool_icon.png";
+import huvtsas_solih_oroo_icon from "../../icons/huvtsas_solih_oroo_icon.png";
+import onoonii_sambar_icon from "../../icons/onoonii_sambar_icon.png";
 
 const HallsList = () => {
     const navigate = useNavigate();
@@ -34,21 +28,15 @@ const HallsList = () => {
     const [loading, setLoading] = useState(true);
     const [medeelluud, setFoodList] = useState([]);
 
-
     useEffect(() => {
         Axios.get("http://localhost:8000/read_jobs")
-          .then((response) => {
-            setFoodList(response.data);
-          })
-          .catch((error) => {
-            console.error('Error fetching jobs:', error);
-          });
-      }, []);
-
-
-
-
-
+            .then((response) => {
+                setFoodList(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching jobs:", error);
+            });
+    }, []);
 
     useEffect(() => {
         const fetchHalls = async () => {
@@ -67,10 +55,9 @@ const HallsList = () => {
         fetchHalls();
     }, []);
 
-
     const handleEditClick = (id) => {
-      localStorage.setItem('Songoson_Ajliin_ID', id);
-      navigate('/seeing_zaal_info');
+        localStorage.setItem("Songoson_Ajliin_ID", id);
+        navigate("/seeing_zaal_info");
     };
 
     const filterUnsaledHalls = () => {
@@ -96,53 +83,115 @@ const HallsList = () => {
                             className="w-full h-[250px] object-cover rounded-t-lg mb-5"
                         />
                         <div className="flex justify-center items-center mt-2 space-x-2 border-2 border-black p-2 rounded-lg">
-                            {job.zaalnii_bolomjuud.includes('Basketball') && (
-    <img src={basketball_icon} className="w-6 h-6" alt="Basketball" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Volleyball') && (
-    <img src={volleyball_icon} className="w-6 h-6" alt="Volleyball" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Football') && (
-    <img src={football_icon} className="w-6 h-6" alt="Football" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Baseball') && (
-    <img src={baseball_ball_icon} className="w-6 h-6" alt="Baseball" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Badminton') && (
-    <img src={badminton_ball_icon} className="w-6 h-6" alt="Badminton" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Billiard') && (
-    <img src={billiard_ball_icon} className="w-6 h-6" alt="Billiard" />
-  )}
-  {job.zaalnii_bolomjuud.includes('shireenii_tennis') && (
-    <img src={shireenii_tennis_icon} className="w-6 h-6" alt="Shireenii Tennis" />
-  )}
-  {job.zaalnii_bolomjuud.includes('bujgiin_zaal') && (
-    <img src={bujgiin_zaal_icon} className="w-6 h-6" alt="Bujgiin Zaal" />
-  )}
-  {job.zaalnii_bolomjuud.includes('wifi') && (
-    <img src={wifi_icon} className="w-6 h-6" alt="WiFi" />
-  )}
-  {job.zaalnii_bolomjuud.includes('noiliin_oroo') && (
-    <img src={noiliin_oroo_icon} className="w-6 h-6" alt="Noiliin Oroo" />
-  )}
-  {job.zaalnii_bolomjuud.includes('suudal') && (
-    <img src={suudal_icon} className="w-6 h-6" alt="Suudal" />
-  )}
-  {job.zaalnii_bolomjuud.includes('mashinii_zogsool') && (
-    <img src={mashinii_zogsool_icon} className="w-6 h-6" alt="Mashinii Zogsool" />
-  )}
-  {job.zaalnii_bolomjuud.includes('huvtsas_solih_oroo') && (
-    <img src={huvtsas_solih_oroo_icon} className="w-6 h-6" alt="Huvtsas Solih Oroo" />
-  )}
-  {job.zaalnii_bolomjuud.includes('onoonii_sambar') && (
-    <img src={onoonii_sambar_icon} className="w-6 h-6" alt="Onoonii Sambar" />
-  )}
-  {job.zaalnii_bolomjuud.length === 0 && (
-    undefined
-  )}
+                            {job.zaalnii_bolomjuud.includes("Basketball") && (
+                                <img
+                                    src={basketball_icon}
+                                    className="w-6 h-6"
+                                    alt="Basketball"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Volleyball") && (
+                                <img
+                                    src={volleyball_icon}
+                                    className="w-6 h-6"
+                                    alt="Volleyball"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Football") && (
+                                <img
+                                    src={football_icon}
+                                    className="w-6 h-6"
+                                    alt="Football"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Baseball") && (
+                                <img
+                                    src={baseball_ball_icon}
+                                    className="w-6 h-6"
+                                    alt="Baseball"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Badminton") && (
+                                <img
+                                    src={badminton_ball_icon}
+                                    className="w-6 h-6"
+                                    alt="Badminton"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Billiard") && (
+                                <img
+                                    src={billiard_ball_icon}
+                                    className="w-6 h-6"
+                                    alt="Billiard"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "shireenii_tennis"
+                            ) && (
+                                <img
+                                    src={shireenii_tennis_icon}
+                                    className="w-6 h-6"
+                                    alt="Shireenii Tennis"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("bujgiin_zaal") && (
+                                <img
+                                    src={bujgiin_zaal_icon}
+                                    className="w-6 h-6"
+                                    alt="Bujgiin Zaal"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("wifi") && (
+                                <img
+                                    src={wifi_icon}
+                                    className="w-6 h-6"
+                                    alt="WiFi"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("noiliin_oroo") && (
+                                <img
+                                    src={noiliin_oroo_icon}
+                                    className="w-6 h-6"
+                                    alt="Noiliin Oroo"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("suudal") && (
+                                <img
+                                    src={suudal_icon}
+                                    className="w-6 h-6"
+                                    alt="Suudal"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "mashinii_zogsool"
+                            ) && (
+                                <img
+                                    src={mashinii_zogsool_icon}
+                                    className="w-6 h-6"
+                                    alt="Mashinii Zogsool"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "huvtsas_solih_oroo"
+                            ) && (
+                                <img
+                                    src={huvtsas_solih_oroo_icon}
+                                    className="w-6 h-6"
+                                    alt="Huvtsas Solih Oroo"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "onoonii_sambar"
+                            ) && (
+                                <img
+                                    src={onoonii_sambar_icon}
+                                    className="w-6 h-6"
+                                    alt="Onoonii Sambar"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.length === 0 && undefined}
                         </div>
-                        
+
                         <div className="flex mx-5 mt-4 flex-col items-start justify-start">
                             <h2 className="text-xl text-text-primary font-semibold mb-2">
                                 {job.title}
