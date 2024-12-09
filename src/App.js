@@ -18,6 +18,7 @@ import Seeing_Zaal_Info from "./pages/Seeing_Zaal_Info";
 import Zaal_Ezemshigch_Nevternsii_Daraa from "./pages/Zaal_Ezemshigch_Nevternsii_Daraa";
 import NewsDetail from "./pages/newsDetail/NewsDetail";
 import AddHallPage from "./pages/addHallPage";
+import Zaal_update from "./pages/Zaal_update";
 
 function App() {
     return (
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/help" element={<Help />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/test" element={<Test />} />
+                    <Route path="/zaal_update" element={<Zaal_update />} />
                     <Route path="/zaal_Ezemshigch_Nevternsii_Daraa" element={<Zaal_Ezemshigch_Nevternsii_Daraa />} />
                     <Route
                         path="/seeing_Zaal_Info"

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
+import ButtonComponent from "../components/Button";
+//C:\Users\JAMYANAMARJARGAL\Desktop\mzaal\mzaal_client\src\components\Button.js
+
+import { GrCart, GrFavorite, GrSchedules } from "react-icons/gr";
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import basketball_icon from '../icons/basketball_icon.png';
 import volleyball_icon from '../icons/volleyball_icon.png';
@@ -25,50 +29,41 @@ function Zaal_Ezemshigch_Nevternsii_Daraa() {
     height: '200px',
   };
 
-/*
-  useEffect(() => {
-    const token = localStorage.getItem('userEmail');
-    if (token) {
-      console.log("NICE")
-    } else {
-      navigate('/');
-    }
-  }, []);*/
 
 
-  useEffect(() => {
-    Axios.get("http://localhost:8000/read_jobs")
-      .then((response) => {
-        setFoodList(response.data);
+  const handleDeleteClick = (id) => {
+    Axios.delete(`http://localhost:8000/delete_job/${id}`)
+      .then(() => {
+        setFoodList(medeelluud.filter(job => job._id !== id)); 
       })
-      .catch((error) => {
-        console.error('Error fetching jobs:', error);
+      .catch(err => {
+        console.error("Error deleting job:", err);
       });
-  }, []);
-
-
+  };
+  
 
   useEffect(() => {
-  const userEmail = localStorage.getItem('userEmail'); // Get email from localStorage
-  if (!userEmail) {
-    // Redirect to login page if email is not found
-    navigate('/');
-    return;
-  }
-
-  Axios.get("http://localhost:8000/read_jobs", {
-    headers: {
-      'user-email': userEmail // Send email in the headers
+    const userEmail = localStorage.getItem('userEmail'); // Get email from localStorage
+    if (!userEmail) {
+        // Redirect to login page if email is not found
+        navigate('/');
+        return;
     }
-  })
-    .then((response) => {
-      setFoodList(response.data); // Filtered jobs based on the email
-    })
-    .catch((error) => {
-      console.error('Error fetching jobs:', error);
-    });
-}, []);
 
+    Axios.get("http://localhost:8000/read_user_jobs", {
+        headers: {
+            'user-email': userEmail // Send email in the headers
+        }
+    })
+        .then((response) => {
+            setFoodList(response.data); // Filtered jobs based on the email
+        })
+        .catch((error) => {
+            console.error('Error fetching jobs:', error);
+        });
+}, [navigate]);
+
+  
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyBFJ0YbjuM4DrWqq88oHVIOk7W3D8Q4g_k',
@@ -88,6 +83,8 @@ function Zaal_Ezemshigch_Nevternsii_Daraa() {
 
 
 
+  
+
 
 
 
@@ -95,108 +92,171 @@ function Zaal_Ezemshigch_Nevternsii_Daraa() {
 
 
   return (
-    <div className="bg-gray-100 min-h-screen p-4">
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 my-7">
+            {medeelluud.map((job, key) => (
+                <div
+                    key={key}
+                    className="p-4 border border-gray-200 rounded-lg hover:shadow-lg transition flex flex-col justify-between"
+                >
+                    <div>
+                        <img
+                            src={job.images[0]}
+                            alt={job.title}
+                            className="w-full h-[250px] object-cover rounded-t-lg mb-5"
+                        />
+                        <div className="flex justify-center items-center mt-2 space-x-2 border-2 border-black p-2 rounded-lg">
+                            {job.zaalnii_bolomjuud.includes("Basketball") && (
+                                <img
+                                    src={basketball_icon}
+                                    className="w-6 h-6"
+                                    alt="Basketball"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Volleyball") && (
+                                <img
+                                    src={volleyball_icon}
+                                    className="w-6 h-6"
+                                    alt="Volleyball"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Football") && (
+                                <img
+                                    src={football_icon}
+                                    className="w-6 h-6"
+                                    alt="Football"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Baseball") && (
+                                <img
+                                    src={baseball_ball_icon}
+                                    className="w-6 h-6"
+                                    alt="Baseball"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Badminton") && (
+                                <img
+                                    src={badminton_ball_icon}
+                                    className="w-6 h-6"
+                                    alt="Badminton"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("Billiard") && (
+                                <img
+                                    src={billiard_ball_icon}
+                                    className="w-6 h-6"
+                                    alt="Billiard"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "shireenii_tennis"
+                            ) && (
+                                <img
+                                    src={shireenii_tennis_icon}
+                                    className="w-6 h-6"
+                                    alt="Shireenii Tennis"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("bujgiin_zaal") && (
+                                <img
+                                    src={bujgiin_zaal_icon}
+                                    className="w-6 h-6"
+                                    alt="Bujgiin Zaal"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("wifi") && (
+                                <img
+                                    src={wifi_icon}
+                                    className="w-6 h-6"
+                                    alt="WiFi"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("noiliin_oroo") && (
+                                <img
+                                    src={noiliin_oroo_icon}
+                                    className="w-6 h-6"
+                                    alt="Noiliin Oroo"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes("suudal") && (
+                                <img
+                                    src={suudal_icon}
+                                    className="w-6 h-6"
+                                    alt="Suudal"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "mashinii_zogsool"
+                            ) && (
+                                <img
+                                    src={mashinii_zogsool_icon}
+                                    className="w-6 h-6"
+                                    alt="Mashinii Zogsool"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "huvtsas_solih_oroo"
+                            ) && (
+                                <img
+                                    src={huvtsas_solih_oroo_icon}
+                                    className="w-6 h-6"
+                                    alt="Huvtsas Solih Oroo"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.includes(
+                                "onoonii_sambar"
+                            ) && (
+                                <img
+                                    src={onoonii_sambar_icon}
+                                    className="w-6 h-6"
+                                    alt="Onoonii Sambar"
+                                />
+                            )}
+                            {job.zaalnii_bolomjuud.length === 0 && undefined}
+                        </div>
 
-  {/* Grid container with horizontal padding */}
-  <div className="px-16 sm:px-20 lg:px-24 grid grid-cols-10 sm:grid-cols-10 lg:grid-cols-3 gap-10">
-  {medeelluud.map((job, key) => (
-    <div
-      key={key}
-      className="bg-white shadow-md rounded-lg p-4 border border-gray-200" // Updated padding
-    >
-      <img 
-        src={job.images[0]} 
-        alt="Job Image" 
-        className="w-full h-[230px] object-cover rounded-lg mb-4" // Added bottom margin
-      />
-
-
-
-<div className="flex justify-center items-center mt-2 space-x-2 border border-gray-300 p-2 rounded-lg">
-
-{job.zaalnii_bolomjuud.includes('Basketball') && (
-    <img src={basketball_icon} className="w-6 h-6" alt="Basketball" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Volleyball') && (
-    <img src={volleyball_icon} className="w-6 h-6" alt="Volleyball" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Football') && (
-    <img src={football_icon} className="w-6 h-6" alt="Football" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Baseball') && (
-    <img src={baseball_ball_icon} className="w-6 h-6" alt="Baseball" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Badminton') && (
-    <img src={badminton_ball_icon} className="w-6 h-6" alt="Badminton" />
-  )}
-  {job.zaalnii_bolomjuud.includes('Billiard') && (
-    <img src={billiard_ball_icon} className="w-6 h-6" alt="Billiard" />
-  )}
-  {job.zaalnii_bolomjuud.includes('shireenii_tennis') && (
-    <img src={shireenii_tennis_icon} className="w-6 h-6" alt="Shireenii Tennis" />
-  )}
-  {job.zaalnii_bolomjuud.includes('bujgiin_zaal') && (
-    <img src={bujgiin_zaal_icon} className="w-6 h-6" alt="Bujgiin Zaal" />
-  )}
-  {job.zaalnii_bolomjuud.includes('wifi') && (
-    <img src={wifi_icon} className="w-6 h-6" alt="WiFi" />
-  )}
-  {job.zaalnii_bolomjuud.includes('noiliin_oroo') && (
-    <img src={noiliin_oroo_icon} className="w-6 h-6" alt="Noiliin Oroo" />
-  )}
-  {job.zaalnii_bolomjuud.includes('suudal') && (
-    <img src={suudal_icon} className="w-6 h-6" alt="Suudal" />
-  )}
-  {job.zaalnii_bolomjuud.includes('mashinii_zogsool') && (
-    <img src={mashinii_zogsool_icon} className="w-6 h-6" alt="Mashinii Zogsool" />
-  )}
-  {job.zaalnii_bolomjuud.includes('huvtsas_solih_oroo') && (
-    <img src={huvtsas_solih_oroo_icon} className="w-6 h-6" alt="Huvtsas Solih Oroo" />
-  )}
-  {job.zaalnii_bolomjuud.includes('onoonii_sambar') && (
-    <img src={onoonii_sambar_icon} className="w-6 h-6" alt="Onoonii Sambar" />
-  )}
-  {job.zaalnii_bolomjuud.length === 0 && (
-    undefined
-  )}
-
-  
-  </div>
-
-
-      <h4 className="text-lg font-medium mb-2">{job.title}</h4> 
-      <p className="text-lg text-blue-500 font-medium mb-2">₮{job.une} / 1 цаг </p>
-      <p className="text-gray-700 text-sm mb-4">{job.description}</p> 
-      
-
-
-      <button onClick={() => handleEditClick(job._id)}>move</button>
-
-     
-
-
-      
-
-
-      {/* Map 
-      <div className="overflow-hidden rounded-lg">
-        <GoogleMap
-          mapContainerStyle={{ width: '100%', height: '150px' }}
-          zoom={12}
-          center={{
-            lat: job.latitude,
-            lng: job.longitude,
-          }}
-        >
-          <Marker position={{ lat: job.latitude, lng: job.longitude }} />
-        </GoogleMap>
-      </div>
-      */}
-    </div>
-  ))}
-</div>
-
-</div>
+                        <div className="flex mx-5 mt-4 flex-col items-start justify-start">
+                            <h2 className="text-xl text-text-primary font-semibold mb-2">
+                                {job.title}
+                            </h2>
+                            <div className="text-lg text-blue-500">
+                                {job.une} Цаг
+                            </div>
+                            {/*hall.sale && (
+                                <div className="text-lg text-red-500 font-bold">
+                                    Sale: {job.une}
+                                </div>
+                            )*/}
+                            <p className="text-text-secondary text-sm mt-3 mb-4 text-justify">
+                                {job.description
+                                    ? job.description > 100
+                                        ? `${job.description.slice(0, 100)}...`
+                                        : job.description
+                                    : "No description available."}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="flex justify-center gap-3 p-3">
+                        <ButtonComponent onClick={() => handleDeleteClick(job._id)}
+                            icon={<GrFavorite size={20} />}
+                            className="py-3 px-3 bg-transparent hover:bg-transparent text-orange hover:text-orange-400 transition hover:bg-orange-100 rounded-full hover:shadow-lg"
+                        />
+                        <ButtonComponent
+                            onClick={() => handleEditClick(job._id)}
+                            icon={<GrCart size={20} className="mr-2" />}
+                            className="py-3 px-3 bg-red-500 hover:bg-red-600 text-white transition rounded-2xl hover:shadow-lg"
+                        >
+                            Захиалах
+                        </ButtonComponent>
+                        <ButtonComponent
+                            onClick={() => navigate('/zaal_update')}
+                            //navigate('/seeing_zaal_info');
+                            icon={<GrSchedules size={20} />}
+                            className="py-3 px-3 bg-transparent hover:bg-transparent text-orange hover:text-orange-400 transition hover:bg-orange-100 rounded-full hover:shadow-lg"
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
 
 
   );
