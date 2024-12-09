@@ -20,6 +20,8 @@ const HomePage = () => {
 
     const handleLogout = () => {
         localStorage.removeItem("authToken");
+        localStorage.removeItem("userEmail");
+        localStorage.removeItem("Songoson_Ajliin_ID");
         localStorage.removeItem("user");
         window.location.href = "/login";
     };
