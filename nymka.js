@@ -328,3 +328,4 @@ export default AddNewsPage;
 // za ene neg l hudlaa ywaad bgam shig haragdaad bhiin
   //za bolood bh shig bnashu
   //za nice
+  //rbfnvepigwpgqhburoqbu3gir
