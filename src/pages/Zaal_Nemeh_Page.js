@@ -206,15 +206,20 @@ const Zaal_Nemeh_Page = () => {
                         />
                     </div>
 
-                    <div>
-          <label>Upload 3 Images:</label>
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={handleImageChange}
-          />
-        </div>
+                    <div className="flex flex-col items-center space-y-4">
+  <label htmlFor="file-upload" className="bg-green-500 text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-green-600 transition">
+    Заалны зураг сонгох
+  </label>
+  <input
+    type="file"
+    id="file-upload"
+    accept="image/*"
+    multiple
+    onChange={handleImageChange}
+    className="hidden"
+  />
+</div>
+
         
                     
 
@@ -472,17 +477,6 @@ const Zaal_Nemeh_Page = () => {
 
 
 
-                    <div className='input_container'>
-                        <h2>Заалны зураг сонгох</h2>
-                        <input
-                            className='input_field'
-                            placeholder=''
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            
-                        />
-                    </div>
 
 
                     <GoogleMap

@@ -103,7 +103,7 @@ const Zaal_update = () => {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            alert("Job updated successfully");
+            alert("Мэдээлэл өөрчлөгдлөө");
         } catch (err) {
             console.error("Error updating job:", err);
             alert("Failed to update the job");

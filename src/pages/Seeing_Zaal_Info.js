@@ -1,17 +1,49 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-
+import axios from 'axios';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Modal from "../components/Modal";
 
+
 const Seeing_Zaal_Info = () => {
+    const [grid, setGrid] = useState(Array(9).fill("no")); // Interactive grid for user input
     const [foodList, setFoodList] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null); // State for selected date
+    const [fetchedGrid, setFetchedGrid] = useState(Array(9).fill("no")); // Fetched grid from MongoDB
+
+
+    useEffect(() => {
+        const fetchGridData = async () => {
+            try {
+                const response = await axios.get('http://localhost:8000/api/grid');
+                setFetchedGrid(response.data.grid); // Update state with fetched grid data
+            } catch (error) {
+                console.error('Error fetching grid:', error);
+            }
+        };
+        fetchGridData();
+    }, []);
+
+    const handleButtonClick = (index) => {
+        const newGrid = [...grid];
+        newGrid[index] = newGrid[index] === "yes" ? "no" : "yes"; // Toggle between "yes" and "no"
+        setGrid(newGrid);
+    };
+
+    // Submit interactive grid to MongoDB
+    const handleSubmit = async () => {
+        try {
+            const response = await axios.post('http://localhost:8000/api/grid', { grid });
+            console.log(response.data.message);
+        } catch (error) {
+            console.error("Error saving grid:", error);
+        }
+    };
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: "AIzaSyBFJ0YbjuM4DrWqq88oHVIOk7W3D8Q4g_k",
@@ -70,39 +102,57 @@ const Seeing_Zaal_Info = () => {
                         <div key={key} className="p-4 flex items-center">
                             <div className="flex-1">
                                 <div className="section_2 mb-4">
-                                    <h2>₮{val.une}</h2>
-                                    <strong>Дугаар: {val.description}</strong>
-                                    <strong>{val.job_email}</strong>
+                                <h1 className="text-5xl font-bold mb-5">{val.title}</h1>
+
+
+                                    <p>Тайлбар: {val.description}</p>
+                                    <p>{val.job_email}</p>
                                 </div>
 
                                 {/* Image Slider */}
-                                <div className="relative w-[500px] h-[333px] mt-4">
-                                    <button
-                                        aria-label="Previous image"
-                                        onClick={handlePrev}
-                                        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white text-2xl p-2 cursor-pointer"
-                                    >
-                                        &lt;
-                                    </button>
-                                    {val.images && val.images.length > 0 ? (
-                                        <img
-                                            src={val.images[currentIndex]}
-                                            alt={`ascasc`}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center text-gray-500">
-                                            No images available
-                                        </div>
-                                    )}
-                                    <button
-                                        aria-label="Next image"
-                                        onClick={handleNext}
-                                        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white text-2xl p-2 cursor-pointer"
-                                    >
-                                        &gt;
-                                    </button>
-                                </div>
+                                {/* Image Slider */}
+{/* Image Slider */}
+{/* Image Slider */}
+<div className="relative w-[530px] h-[363px] mt-4">
+    {/* Price Display */}
+    {val.une && (
+        <div className="absolute top-2 right-2 border-2 border-orange-500 bg-orange-500 text-white px-3 py-1 rounded-lg shadow-md">
+        <p>Цагийн {val.une}₮</p>
+    </div>
+    
+    
+    
+    
+    )}
+    <button
+        aria-label="Previous image"
+        onClick={handlePrev}
+        className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white text-2xl p-2 cursor-pointer"
+    >
+        &lt;
+    </button>
+    {val.images && val.images.length > 0 ? (
+        <img
+            src={val.images[currentIndex]}
+            alt={`Image ${currentIndex + 1}`}
+            className="w-full h-full object-cover"
+        />
+    ) : (
+        <div className="w-full h-full flex items-center justify-center text-gray-500">
+            No images available
+        </div>
+    )}
+    <button
+        aria-label="Next image"
+        onClick={handleNext}
+        className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white text-2xl p-2 cursor-pointer"
+    >
+        &gt;
+    </button>
+</div>
+
+
+
 
                                 {/* Thumbnail Images */}
                                 <div className="flex justify-start mt-2">
@@ -201,6 +251,231 @@ const Seeing_Zaal_Info = () => {
                     />
                 </div>
             </Modal>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', marginBottom: '20px' }}>
+                <button
+                    onClick={() => handleButtonClick(0)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[0] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[0].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(1)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[1] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[1].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(2)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[2] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[2].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(3)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[3] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[3].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(4)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[4] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[4].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(5)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[5] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[5].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(6)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[6] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[6].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(7)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[7] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[7].toUpperCase()}
+                </button>
+                <button
+                    onClick={() => handleButtonClick(8)}
+                    style={{
+                        padding: '20px',
+                        backgroundColor: grid[8] === "yes" ? 'green' : 'red',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'pointer',
+                    }}
+                >
+                    {grid[8].toUpperCase()}
+                </button>
+            </div>
+            <button onClick={handleSubmit} style={{ marginBottom: '20px', padding: '10px 20px', cursor: 'pointer' }}>
+                Submit Grid
+            </button>
+
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[0] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[0].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[1] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[1].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[2] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[2].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[3] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[3].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[4] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[4].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[5] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[5].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[6] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[6].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[7] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[7].toUpperCase()}
+                </button>
+                <button
+                    disabled
+                    style={{
+                        padding: '20px',
+                        backgroundColor: fetchedGrid[8] === "yes" ? 'pink' : 'gray',
+                        color: 'white',
+                        border: 'none',
+                        cursor: 'not-allowed',
+                    }}
+                >
+                    {fetchedGrid[8].toUpperCase()}
+                </button>
+            </div>
         </div>
     );
 };

@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import ButtonComponent from "../components/Button";
 //C:\Users\JAMYANAMARJARGAL\Desktop\mzaal\mzaal_client\src\components\Button.js
+import { GrEdit } from 'react-icons/gr';
+import { GrTrash } from 'react-icons/gr';
+
 
 import { GrCart, GrFavorite, GrSchedules } from "react-icons/gr";
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
@@ -236,23 +239,28 @@ function Zaal_Ezemshigch_Nevternsii_Daraa() {
                         </div>
                     </div>
                     <div className="flex justify-center gap-3 p-3">
-                        <ButtonComponent onClick={() => handleDeleteClick(job._id)}
-                            icon={<GrFavorite size={20} />}
-                            className="py-3 px-3 bg-transparent hover:bg-transparent text-orange hover:text-orange-400 transition hover:bg-orange-100 rounded-full hover:shadow-lg"
-                        />
+                    <ButtonComponent
+  onClick={() => handleDeleteClick(job._id)}
+  icon={<GrTrash size={20} />}
+  className="py-3 px-3 bg-red-600 text-white hover:bg-red-500 transition rounded-full hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50"
+/>
+
                         <ButtonComponent
                             onClick={() => handleEditClick(job._id)}
                             icon={<GrCart size={20} className="mr-2" />}
                             className="py-3 px-3 bg-red-500 hover:bg-red-600 text-white transition rounded-2xl hover:shadow-lg"
                         >
-                            Захиалах
+                            Харах
                         </ButtonComponent>
                         <ButtonComponent
-                            onClick={() => navigate('/zaal_update')}
-                            //navigate('/seeing_zaal_info');
-                            icon={<GrSchedules size={20} />}
-                            className="py-3 px-3 bg-transparent hover:bg-transparent text-orange hover:text-orange-400 transition hover:bg-orange-100 rounded-full hover:shadow-lg"
-                        />
+  onClick={() => navigate('/zaal_update')}
+  icon={<GrEdit size={20} />} // Edit pencil icon
+  className="flex items-center justify-center w-12 h-12 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
+ />
+
+
+
+
                     </div>
                 </div>
             ))}
