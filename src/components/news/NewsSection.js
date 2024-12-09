@@ -56,7 +56,7 @@ const NewsSection = () => {
                     {currentNews.length > 0 ? (
                         currentNews.map((item) => (
                             <div
-                                key={item.id}
+                                key={item._id}
                                 className="p-4 h-[600px] bg-white border border-gray-200 rounded-md hover:shadow-lg transition flex flex-col justify-between"
                             >
                                 <div>
@@ -68,7 +68,8 @@ const NewsSection = () => {
                                     <div className="flex mx-3 mt-2 flex-col items-start">
                                         <div className="flex mt-3 gap-2 items-center text-text-secondary text-sm">
                                             <FaRegCalendarAlt />{" "}
-                                            {formatDate(item.publishedAt)}
+                                            {formatDate(item.publishedAt)} |{" "}
+                                            {item.author}
                                         </div>
 
                                         <h1 className="text-text-primary text-xl font-semibold mt-1 mb-2 text-justify">
