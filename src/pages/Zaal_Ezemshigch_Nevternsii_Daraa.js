@@ -46,6 +46,30 @@ function Zaal_Ezemshigch_Nevternsii_Daraa() {
       });
   }, []);
 
+
+
+  useEffect(() => {
+  const userEmail = localStorage.getItem('userEmail'); // Get email from localStorage
+  if (!userEmail) {
+    // Redirect to login page if email is not found
+    navigate('/');
+    return;
+  }
+
+  Axios.get("http://localhost:8000/read_jobs", {
+    headers: {
+      'user-email': userEmail // Send email in the headers
+    }
+  })
+    .then((response) => {
+      setFoodList(response.data); // Filtered jobs based on the email
+    })
+    .catch((error) => {
+      console.error('Error fetching jobs:', error);
+    });
+}, []);
+
+
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyBFJ0YbjuM4DrWqq88oHVIOk7W3D8Q4g_k',
   });
@@ -59,6 +83,31 @@ function Zaal_Ezemshigch_Nevternsii_Daraa() {
     localStorage.setItem('Songoson_Ajliin_ID', id);
     navigate('/seeing_zaal_info');
   };
+
+
+
+
+
+  useEffect(() => {
+    const userEmail = localStorage.getItem('userEmail'); // Get email from localStorage
+    if (!userEmail) {
+      // Redirect to login page if email is not found
+      navigate('/');
+      return;
+    }
+  
+    Axios.get("http://localhost:8000/read_user_jobs", {
+      headers: {
+        'user-email': userEmail // Send email in the headers
+      }
+    })
+      .then((response) => {
+        setFoodList(response.data); // Filtered jobs based on the email
+      })
+      .catch((error) => {
+        console.error('Error fetching jobs:', error);
+      });
+  }, []);
 
 
 
