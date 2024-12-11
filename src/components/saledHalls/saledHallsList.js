@@ -58,7 +58,22 @@ const SaledHallsList = () => {
                                 className="w-full h-[250px] object-cover rounded-t-lg mb-5"
                             />
                             <div className="border-2 rounded-md p-3 my-2">
-                                {hall.category || "Category"}
+                                <div className="flex justify-center">
+                                    {hall.type && hall.type.length > 0 ? (
+                                        hall.type.map((type) => (
+                                            <img
+                                                key={type._id}
+                                                src={type.icon}
+                                                alt={`${type.name} Icon`}
+                                                className="w-6 h-6 rounded-full"
+                                            />
+                                        ))
+                                    ) : (
+                                        <p className="text-sm text-gray-400">
+                                            No types available
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                             <div className="flex mx-5 mt-4 flex-col items-start justify-start">
                                 <h2 className="text-xl text-text-primary font-semibold mb-2">
